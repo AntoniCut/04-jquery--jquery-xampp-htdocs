@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Curso de jQuery</title>
+    <style type="text/css">
+    #muestraerror{
+      color: red;
+    }
+    .inputerror{
+      background-color: #f99;
+    }
+    </style>
+</head>
+<body>
+    <h1>con validaciones en el lado del servidor</h1>
+    <div id="muestraerror"></div>
+    <form action="enviar2.php" id="f1" method=post>
+        Nombre: <input type="text" name="nombre" id="nombre">
+        <br>
+        email: <input type="text" name="email" id="email">
+        <br>
+        Intereses <textarea name="intereses" id="intereses"></textarea>
+        <br>
+        Sexo: <select name="sexo">
+            <option value="H">Hombre</option>
+            <option value="M">Mujer</option>
+        </select>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <div id="resultado">ressssss</div>
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function(){
+      		//load más fácil
+      		
+          $("#f1").on("submit", function(e){
+              e.preventDefault();
+
+              //validaciones en el lado del cliente
+              var error = "";
+              if($("#nombre").val().length < 3){
+                error += "No es un nombre válido"
+              }
+              if($("#email").val().length < 5){
+                error += "<br>No es un email válido"
+              }
+              //miro si hay algún error
+              if(error != ""){
+                //hubo error
+                $("#muestraerror").html(error);
+              }else{
+                //no hubo error detectado en el cliente
+                $("#muestraerror").empty();
+                var form = $(this);
+                var url = form.attr("action");
+                var datos = form.serialize();
+                form.find("input[type='submit']").prop("disabled", true);
+                
+                /////////////////////////////////////////////
+                var objAjax = $.post(url,datos,function(respuesta){
+                  if(respuesta.valido){
+                    $("#resultado").text(respuesta.mensaje);
+                  }else{
+                    $("#muestraerror").text(respuesta.mensaje);
+                  }
+                },"json");
+                objAjax.always(function(){
+                  form.find("input[type='submit']").prop("disabled", false);
+                })
+                /////////////////////////////////////////////
+              }
+          });
+
+          $("#nombre").on("change", function(){
+            var campo = $(this);
+            if(campo.val().length < 3){
+              campo.addClass("inputerror");
+            }else{
+              campo.removeClass("inputerror");
+            }
+          })
+        
+        });
+    </script>
+</body>
+</html>

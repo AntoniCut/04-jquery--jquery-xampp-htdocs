@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+<img src="./img/foto2.jpg">
+=======
+<img src="./06-jquery-y-ajax/img/foto2.jpg">
+>>>>>>> 71622ca3be445bbac7439d606a7496f52479ab8d

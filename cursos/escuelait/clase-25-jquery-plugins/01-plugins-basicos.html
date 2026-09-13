@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml" />
+    <title>Clase 25 - jQuery Plugins - Plugins Básicos</title>
+
+    <script src="../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+
+    <script src="plugins/jquery.urlize.js"></script>
+    <script src="plugins/jquery.boldize.js"></script>
+    <script src="plugins/jquery.underlinize.js"></script>
+    <script src="plugins/jquery.colorize.js"></script>
+    <script src="plugins/jquery.fontSizer.js"></script>
+    
+    <script src="js/plugins-basicos.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Clase 25 - 01 - Plugins Básicos - jQuery Plugins</h1>
+
+
+    <!--  -----  ejemplo con urlize  -----  -->
+    <div id="urlize" data-url="https://jquery.antonydev.tech/escuelait/curso-jquery-escuelait/">
+        Div convertido a enlace con el plugin urlize para acceder al curso de jQuery de Escuela IT de
+        AntonyDev.
+    </div>
+
+    <br><br>
+
+    <!--  -----  ejemplo con underlinize  -----  -->
+    <div id="underlinize">
+        Div con el plugin underlinize para aplicar subrayado.
+    </div>
+
+    <br><br>
+
+
+    <!--  -----  ejemplo con boldize  -----  -->
+    <div id="boldize">
+        Div con el plugin boldize para aplicar negrita.
+    </div>
+
+    <br><br>
+
+
+    <!--  -----  ejemplo con fontSizer  -----  -->
+    <button class="fontSizer" data-fontsizer="-=1" data-fontsizer-target="#fontSizer">-1 px</button>
+    <button class="fontSizer" data-fontsizer="+=1" data-fontsizer-target="#fontSizer">+1 px</button>
+    <div id="fontSizer">
+        Div con el plugin fontSizer para cambiar el tamaño de la fuente.
+    </div>
+
+    <br><br>
+    
+
+    <!--  -----  ejemplo con colorize  -----  -->
+    <div id="colorize" data-color="coral">
+        Div con el plugin colorize para aplicar color.
+    </div>
+    <input type="color" id="colorizeInput" value="#ff7f50" data-colorize-target="#colorize">
+
+    <br><br>
+
+    
+    <!--  -----  ejemplo con todos los plugins  -----  -->
+    <button class="font-sizer" data-fontsizer="-=10">-10 px</button>
+    <button class="font-sizer" data-fontsizer="+=10">+10 px</button>
+
+    <div id="mydiv">
+        <div class="urlize" data-url="https://escuela.it">
+            Enlazar <span class="boldize colorize" data-color="red">sin</span>
+            ser un enlace
+        </div>
+    </div>
+
+</body>
+
+</html>

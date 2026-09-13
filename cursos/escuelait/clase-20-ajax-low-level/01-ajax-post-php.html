@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> 01 - Ajax POST PHP </title>
+</head>
+<body>
+    <h1> 01 - Ajax POST PHP </h1>
+    <div id="capa">click</div>
+    <div id="respuesta"></div>
+    
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    
+    <script>
+        
+        console.log("jQuery version: " + $.fn.jquery);
+        
+        $(function(){
+            $("#capa").on("click", function(){
+
+            	$.ajax({
+					data: {dato: "valor"},
+				   	url: "destino.php",
+				   	type: "post",
+				   	dataType: "html",
+				   	success: function(respuesta){
+				      $("#respuesta").html(respuesta);
+				   	}
+				});
+
+            })
+        });
+    </script>
+</body>
+</html>

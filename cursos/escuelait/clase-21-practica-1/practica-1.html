@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <style type="text/css">
+	    
+        #contenedor{
+   		    max-width: 750px;
+   		    margin: auto;
+   	    }
+   	    
+        section{
+   		    width: 70%;
+   		    float: left;
+   	    }
+   	 
+        aside{
+   		    width: 25%;
+   		    float: right;
+   		    font-size: 0.9em;
+   	    }
+   	 
+        #cajalogin{
+   		    border: 2px solid #1d4d94;
+            padding: 10px 0 10px 15px;
+            background-color: #aec8ee;
+            width: 300px;
+            line-height: 2em;
+            border-radius: 5px;
+            box-shadow: 0 0 9px #000;
+        }
+
+   	    #cajalogin span{
+            width: 100px;
+            display: inline-block;
+        }
+
+   	    #cajalogin .campotexto{
+   		    width: 150px;
+   	    }
+   	 
+        #cajalogin p{
+   		    font-size: 0.875em;
+            margin-top: 0px;
+            background-color: #5f89a3;
+            padding: 4px 10px;
+            margin: -5px 5px 10px -10px;
+            border-radius: 4px;
+            color: #fff;
+            text-shadow: 1px 1px #666;
+        }
+
+        .cargando{
+            background: url(loading.gif) no-repeat 90% 50%;
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    
+    <script>
+   	   
+        $(function(){
+   	    
+            var ventana = $(window);
+            var doc = $(document);
+            var cajalogin = $("#cajalogin");
+            var enlacelogin = $("#enlacelogin");
+
+            cajalogin
+                .css({
+                    position: "absolute",
+                    "z-index": 1000
+                })
+                .hide();
+
+            var capamodal = $("<div>")
+                .attr("id", "capamodal")
+                .css({
+                    opacity: 0.80,
+                    "z-index": 900,
+                    width: doc.width(),
+                    height: doc.height(),
+                    backgroundColor: "#3fc",
+                    position: "fixed",
+                    top: "0px",
+                    left: "0px",
+                    display: "none",
+                    overflow: "hidden"
+                })
+                .appendTo("body");
+
+            enlacelogin.on("click", mostrarLogin);
+            ventana.on("resize", ajustarPosicionesLogin);
+            ventana.on("scroll", ajustarPosicionesLogin);
+            ventana.on("pageshow", function(e){
+                if(e.originalEvent && e.originalEvent.persisted){
+                    resetearLogin();
+                }
+            });
+            
+            $("form", "#cajalogin").on("submit", procesaFormulario);
+
+
+            function procesaFormulario(e){
+                
+                e.preventDefault();
+                
+                var form = $(this);
+                var parrafo = form.prev();
+                
+                $.ajax({
+                
+                    data: form.serialize(),
+                    type: "post",
+                    dataType: "json",
+                    url: form.attr("action"),
+                    
+                    beforeSend: function(){
+                        
+                        form
+                            .find("input[type='submit']")
+                            .prop("disabled", true);
+                                                
+                        parrafo.css("color", "#fff");
+                        parrafo.text("Cargando...");
+                        parrafo.addClass("cargando");
+                    },
+
+                    success: function(respuesta){
+                        
+                        console.log(respuesta);
+                        parrafo.text(respuesta.mensaje);
+                        
+                        if(respuesta.valido){
+                            parrafo.text(respuesta.mensaje);
+                            resetearLogin();
+                            window.location.href = "dentro.html";
+                        }
+                        
+                        else{
+                            parrafo.css("color", "#c33");
+                        }
+                    },
+                                
+                    complete: function(){
+                        
+                        form.find("input[type='submit']").prop("disabled", false);
+                        parrafo.removeClass("cargando");
+                    }
+
+                });
+            }
+
+
+            function resetearLogin(){
+
+                var form = $("form", "#cajalogin");
+                var parrafo = form.prev();
+
+                cajalogin.hide().stop(true, true);
+                capamodal.hide().stop(true, true);
+
+                parrafo
+                    .text("Login de usuarios")
+                    .css("color", "#fff")
+                    .removeClass("cargando");
+
+                form.find("input[type='submit']").prop("disabled", false);
+                form.find("input[type='text']").val("");
+            }
+
+
+            function ajustarPosicionesLogin(){
+
+                cajalogin.css({
+                    top: (((ventana.height() - cajalogin.height()) / 2) + ventana.scrollTop()) + "px",
+                    left: ((ventana.width() - cajalogin.width()) / 2) + "px"
+                });
+
+                capamodal.css({
+                    width: doc.width(),
+                    height: doc.height()
+                });
+            }
+
+
+            function mostrarLogin(e){
+                
+                e.preventDefault();
+
+                ajustarPosicionesLogin();
+                
+                cajalogin.fadeIn(2000);
+                capamodal.fadeIn(2000);
+
+            }
+
+   	    });
+	 	 
+    </script>
+
+</head>
+
+
+<body>
+    
+    <div id="contenedor">
+   	    <h1>Mi sitio web</h1>
+   	    
+        <section>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies elementum arcu, a consectetur mauris vestibulum sit amet. Sed euismod, mauris sit amet pulvinar placerat, eros neque rutrum purus, vitae imperdiet purus odio lacinia tortor. Sed quis felis risus. Praesent orci turpis, pulvinar non ornare sit amet, pharetra ac purus. Proin lacinia molestie egestas. Vestibulum eu quam eget est tristique ultrices. Phasellus consectetur erat vel elit fermentum a tincidunt dui rhoncus.
+            </p><p>
+                Quisque molestie ante eu erat vehicula eu ullamcorper dui sagittis. Quisque tempor sodales ultricies. Donec eget ante eget nulla tempor imperdiet a at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget velit ut est hendrerit imperdiet. Aenean nec sem nec nibh vulputate dapibus tincidunt ultrices massa. Duis nibh nisl, varius a auctor eget, ultrices id odio. Nunc porttitor posuere nisl, at pulvinar augue consequat vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit dolor id dolor vestibulum ut pharetra ante elementum.
+            </p><p>
+                Pellentesque placerat, libero eu hendrerit sollicitudin, mi nisi bibendum metus, rutrum vulputate nulla justo eu nisl. Quisque sed diam tortor, vel varius elit. Aliquam imperdiet interdum urna, eu ultrices elit imperdiet non. In vel tincidunt arcu. Cras laoreet, sem in viverra varius, sem nibh rutrum libero, a laoreet orci tellus id purus. Aenean nisl sem, imperdiet porta mollis eu, ornare at quam. Suspendisse tortor velit, mollis sit amet facilisis et, consequat id nisi. Quisque augue magna, rutrum a pulvinar eget, fringilla vel sapien.
+            </p><p>
+                Cras vitae cursus odio. Integer et erat sed ipsum varius hendrerit sit amet vitae massa. Proin eu urna porttitor elit pulvinar tempus. Morbi quis sollicitudin metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Aenean a est arcu, non commodo lectus. Sed non nulla massa, in feugiat mauris. Nulla ante metus, accumsan sit amet pulvinar eu, feugiat in ligula. Maecenas erat ante, interdum sed vestibulum vel, bibendum fringilla nisi. Nullam porta magna ut quam laoreet non aliquet diam adipiscing. In odio nisl, sagittis et ultricies non, vehicula quis nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla hendrerit consectetur massa, at imperdiet leo feugiat quis.
+            </p><p>
+                Morbi et lacus erat, at elementum velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum porta accumsan nibh, vitae dictum enim pellentesque id. Donec at turpis dolor, vitae porttitor massa. Duis mollis sollicitudin orci, vitae aliquet velit varius sed. In hac habitasse platea dictumst. Cras vel ullamcorper ligula. Nunc nec lorem augue. Nulla quis tortor urna. Quisque hendrerit lobortis leo, vel vestibulum elit faucibus quis. Duis eros arcu, egestas in interdum iaculis, tristique vel felis. Aenean urna mauris, vehicula eget dictum a, viverra nec nulla.
+            </p>
+   	    </section>
+   	 
+        <aside>
+   		    <p>
+   			    Proin eu urna porttitor elit pulvinar tempus. Morbi quis sollicitudin metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Aenean a est arcu, non commodo lectus. Sed non nulla massa, in feugiat mauris. Nulla ante metus, accumsan sit amet pulvinar eu, feugiat in ligula. Maecenas erat ante, interdum sed vestibulum vel, bibendum fringilla nisi. Nullam porta magna ut quam laoreet non aliquet diam adipiscing.
+   		    </p>
+   		    <p>
+   			    <a href="#" id="enlacelogin">Hacer login</a>
+   		    </p>
+   	 </aside>
+
+   	 <div id="cajalogin">
+   		    
+            <p>Login de usuarios</p>
+   		    
+            <form action="login.php">
+   			    
+                <span>User: </span> 
+                <input type="text" name="user" class="campotexto">
+   			    <br>
+   			    
+                <span>Passwd: </span> 
+                <input type="text" name="pass" class="campotexto">
+   			    <br>
+			    
+                <input type="hidden" urlorigen="login.html">
+   			    <input type="submit" value="Login">
+
+   		    </form>
+
+   	    </div>
+
+    </div>
+
+</body>
+</html>

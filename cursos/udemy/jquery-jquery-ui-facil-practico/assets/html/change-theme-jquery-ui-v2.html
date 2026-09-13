@@ -1,0 +1,206 @@
+<!--  **********************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/03-jquery-ui-ejercicios/change-theme-jquery-ui  **********  -->
+<!--  **********************************************************************************************************  -->
+
+<style>
+    .navbar-themes {
+        z-index: 10;
+        position: fixed;
+        top: 150px;
+        right: 120px;
+    }
+
+    .navbar-themes__title {
+        width: 230px;
+        height: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #ffffff;
+        background-color: cornflowerblue;
+        cursor: pointer;
+    }
+
+    .btn-container {
+        height: 800px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .boton-ui {
+        width: 150px;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 5px;
+        margin-bottom: 5px;
+        border: none;
+        cursor: pointer;
+        color: #ffffff;
+        background-color: blueviolet;
+        transition: all 300ms ease-in-out;
+        z-index: 10;
+    }
+
+    .boton-ui:hover {
+        background-color: rgb(69, 8, 126);
+    }
+
+    .active {
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    #to-lightness {
+        background-color: #EB8F00;
+    }
+
+    #to-darkness {
+        background-color: #262626;
+    }
+
+    #to-base {
+        color: #000000;
+        background-color: #EDEDED;
+    }
+
+    #to-black-tie {
+        background-color: #4E4E4E;
+    }
+
+    #to-blitzer {
+        color: #000000;
+        background-color: #FCFCFC;
+    }
+
+    #to-cupertino {
+        color: #000000;
+        background-color: #62BBE9;
+    }
+
+    #to-dark-hive {
+        background-color: #1F7FAD;
+    }
+
+    #to-dot-luv {
+        background-color: #0B5194;
+    }
+
+    #to-eggplant {
+        background-color: #5B5661;
+    }
+
+    #to-excite-bike {
+        background-color: #E9A219;
+    }
+
+    #to-flick {
+        background-color: #FF00A4;
+    }
+
+    #to-hot-sneack {
+        color: #000000;
+        background-color: #CCD232;
+    }
+
+    #to-humanity {
+        color: #000000;
+        background-color: #F6F1E6;
+    }
+
+    #to-le-frog {
+        background-color: #4F792E;
+    }
+
+    #to-mint-choc {
+        color: #000000;
+        background-color: #BAEC7E;
+    }
+
+    #to-overcast {
+        color: #000000;
+        background-color: #C9C9C9;
+    }
+
+    #to-pepper-grinder {
+        background-color: #674F2B;
+    }
+
+    #to-redmond {
+        color: #000000;
+        background-color: #DEEDF8;
+    }
+
+    #to-smoothness {
+        color: #000000;
+        background-color: #E3E3E3;
+    }
+
+    #to-south-street {
+        color: #000000;
+        background-color: #7CBB40;
+    }
+
+    #to-start {
+        color: #000000;
+        background-color: #81CCED;
+    }
+
+    #to-sunny {
+        color: #000000;
+        background-color: #FEEEBD;
+    }
+
+    #to-swanky-purse {
+        background-color: #D4A515;
+    }
+
+    #to-trontastic {
+        background-color: #474747;
+    }
+
+    #to-vader {
+        background-color: #262626;
+    }
+</style>
+
+
+<nav class="navbar-themes">
+
+    <h2 class="navbar-themes__title"> Themes jQuery UI </h2>
+
+    <div id="btn-container" class="btn-container">
+
+        <button id="to-lightness" class="boton-ui active"> lightness </button>
+        <button id="to-darkness" class="boton-ui"> darkness </button>
+        <button id="to-base" class="boton-ui"> base </button>
+        <button id="to-black-tie" class="boton-ui"> black-tie </button>
+        <button id="to-blitzer" class="boton-ui"> blitzer </button>
+        <button id="to-cupertino" class="boton-ui"> cupertino </button>
+        <button id="to-dark-hive" class="boton-ui"> dark-hive </button>
+        <button id="to-dot-luv" class="boton-ui"> dot-luv </button>
+        <button id="to-eggplant" class="boton-ui"> eggplant </button>
+        <button id="to-excite-bike" class="boton-ui"> excite-bike </button>
+        <button id="to-flick" class="boton-ui"> flick </button>
+        <button id="to-hot-sneack" class="boton-ui"> hot-sneack </button>
+        <button id="to-humanity" class="boton-ui"> humanity </button>
+        <button id="to-le-frog" class="boton-ui"> le-frog </button>
+        <button id="to-mint-choc" class="boton-ui"> mint-choc </button>
+        <button id="to-overcast" class="boton-ui"> overcast </button>
+        <button id="to-pepper-grinder" class="boton-ui"> pepper-grinder </button>
+        <button id="to-redmond" class="boton-ui"> redmond </button>
+        <button id="to-smoothness" class="boton-ui"> smoothness </button>
+        <button id="to-south-street" class="boton-ui"> south-street </button>
+        <button id="to-start" class="boton-ui"> start </button>
+        <button id="to-sunny" class="boton-ui"> sunny </button>
+        <button id="to-swanky-purse" class="boton-ui"> swanky-purse </button>
+        <button id="to-trontastic" class="boton-ui"> trontastic </button>
+        <button id="to-vader" class="boton-ui"> vader </button>
+
+    </div>
+
+</nav>
+
+
+<!-- <script src=".assets/js/themes-jQueryUI.js"> </script> -->

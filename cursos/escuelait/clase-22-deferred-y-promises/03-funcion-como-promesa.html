@@ -1,0 +1,70 @@
+<!--
+    *  ---------------------------------------------------------------------  *
+    *  -----  03-funcion-como-promesa.html  --  /03-funcion-como-promesa.html  -----  *
+    *  ---------------------------------------------------------------------  *
+-->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>3 - Función como Promesa</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="03-function-como-promesa.js"></script>
+        <style>
+            body {
+                font-family: sans-serif;
+                max-width: 720px;
+                margin: 1.5rem auto;
+                line-height: 1.5;
+            }
+
+            section {
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                margin-bottom: 1.5rem;
+                padding: 1rem 1.25rem;
+            }
+
+            section h2 {
+                margin-top: 0;
+                font-size: 1.1rem;
+            }
+
+            .hint {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .demo-box {
+                border: 1px dashed #999;
+                padding: 0.5rem 0.75rem;
+                margin-top: 0.5rem;
+                min-height: 1.5rem;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>3 - Función como Promesa</h1>
+
+        <section id="demo-principal">
+            <h2>Función como promesa</h2>
+            <p>Esta es una función que devuelve una promesa.</p>
+            <p>La promesa se resuelve si el número es par, y se rechaza si el número es impar.</p>
+            <p>La promesa se resuelve con el mensaje "¡¡Es par!!" si el número es par, y con el mensaje "Mal!!!" si el número es impar.</p>
+            <p>La promesa se rechaza con el mensaje "Error" si el número no es un número.</p>
+
+            <label for="number">Prueba con un número:</label>
+            <input
+                type="text"
+                id="number"
+                placeholder="Introduce un número"
+            >
+
+            <p class="hint">Cambia el valor del input para ver el resultado:</p>
+            <div id="result" class="demo-box" aria-live="polite"></div>
+        </section>
+
+    </body>
+</html>

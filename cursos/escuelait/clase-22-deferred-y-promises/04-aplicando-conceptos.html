@@ -1,0 +1,120 @@
+<!--
+    *  -----------------------------------------------------------------------  *
+    *  -----  04-aplicando-conceptos.html  --  /04-aplicando-conceptos.html  -----  *
+    *  -----------------------------------------------------------------------  *
+-->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>4 - Aplicando conceptos</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="04-aplicando-conceptos.js"></script>
+        <style>
+            body {
+                font-family: sans-serif;
+                max-width: 720px;
+                margin: 1.5rem auto;
+                line-height: 1.5;
+            }
+
+            section {
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                margin-bottom: 1.5rem;
+                padding: 1rem 1.25rem;
+            }
+
+            section h2 {
+                margin-top: 0;
+                font-size: 1.1rem;
+            }
+
+            .hint {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .demo-box {
+                border: 1px dashed #999;
+                padding: 0.5rem 0.75rem;
+                margin-top: 0.5rem;
+                min-height: 1.5rem;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>4 - Aplicando conceptos</h1>
+
+        <section id="ejemplo-1">
+            <h2>Ejemplo 1: $.when con promesa propia y $.get</h2>
+            <p class="hint">Al cargar, espera a <code>isPair(2)</code> y a la petición de <code>_partial-01.html</code>.</p>
+            <div id="result-ejemplo-1" class="demo-box" aria-live="polite"></div>
+        </section>
+
+        <section id="ejemplo-2">
+            <h2>Ejemplo 2: $.when con un valor no diferido</h2>
+            <p class="hint">jQuery envuelve el <code>2</code> en una promesa ya resuelta.</p>
+            <div id="result-ejemplo-2" class="demo-box" aria-live="polite"></div>
+        </section>
+
+        <section id="ejemplo-3">
+            <h2>Ejemplo 3: .then con éxito y fallo</h2>
+            <p class="hint">Una petición correcta y otra a un archivo que no existe.</p>
+            <p><strong>Éxito:</strong></p>
+            <div id="result-ejemplo-3-ok" class="demo-box" aria-live="polite"></div>
+            <p><strong>Fallo:</strong></p>
+            <div id="result-ejemplo-3-fail" class="demo-box" aria-live="polite"></div>
+        </section>
+
+        <section id="ejemplo-4">
+            <h2>Ejemplo 4: isPair con .progress</h2>
+            <p class="hint">Muestra las notificaciones de progreso antes del resultado final.</p>
+            <div id="result-ejemplo-4" class="demo-box" aria-live="polite"></div>
+        </section>
+
+        <section id="ejemplo-5">
+            <h2>Ejemplo 5: $.when con $.get y animación</h2>
+            <p class="hint">El input de abajo parpadea mientras espera al <code>$.get</code>.</p>
+            <input
+                type="text"
+                id="number-ejemplo-5"
+                value="Animación + $.get"
+                readonly
+            >
+            <p id="result-ejemplo-5" class="hint"></p>
+        </section>
+
+        <section id="ejemplo-6">
+            <h2>Ejemplo 6: $.when con .css (no es diferido)</h2>
+            <p class="hint">El <code>.css()</code> no anima: la promesa se resuelve al instante.</p>
+            <input
+                type="text"
+                id="number-ejemplo-6"
+                value="Se pondrá en negrita al cargar"
+                readonly
+            >
+        </section>
+
+        <section id="ejemplo-7">
+            <h2>Ejemplo 7: $.when con varias animaciones</h2>
+            <p class="hint">Dos animaciones en paralelo: margen y tamaño de fuente.</p>
+            <input
+                type="text"
+                id="number-ejemplo-7"
+                value="Margen"
+                readonly
+            >
+            <div id="result-ejemplo-7" class="demo-box">Tamaño de fuente</div>
+        </section>
+
+        <section id="ejemplo-8">
+            <h2>Ejemplo 8: varios .done en la misma promesa</h2>
+            <p class="hint">Varios callbacks registrados sobre la misma promesa de <code>isPair(2)</code>.</p>
+            <div id="result-ejemplo-8" class="demo-box" aria-live="polite"></div>
+        </section>
+
+    </body>
+</html>

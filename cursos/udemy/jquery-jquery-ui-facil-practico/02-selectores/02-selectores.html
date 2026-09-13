@@ -1,0 +1,150 @@
+<!--  *********************************************************  -->
+<!--  **********  /02-selectores/02-selectores.html  **********  -->
+<!--  *********************************************************  -->
+
+
+<style>
+    p {
+        margin: 20px;
+        cursor: pointer;
+    }
+</style>
+
+
+<section class="ejercicio__container">
+
+    <h2 class="title__ejercicio"> 02 Selectores </h2>
+
+    <div class="btn__container">
+        <button id="btnPdf1" class="btnPdf"> Selectores de Parentezco </button>
+        <button id="btnPdf2" class="btnPdf"> Resumen de Selectores </button>
+        <button class="btn-close-pdf"> Cerrar PDF </button>
+    </div>
+
+
+    <!--  ----------  PDFs  ------------>
+
+    <embed id="Pdf1" class="pdf" src="./02-selectores/pdf/08-selectores-de-parentesco.pdf" type="application/pdf"
+        width="100%" height="800px">
+    <embed id="Pdf2" class="pdf" src="./02-selectores/pdf/09-resumen-selectores.pdf" type="application/pdf" width="100%"
+        height="800px">
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------  SELECTORES BÁSICOS  ----------  -->
+
+    <h3 class="subtitle__ejercicio"> Selectores Básicos </h3>
+    <p id="primero">
+        ID - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam incidunt beatae soluta esse. Fuga a
+        excepturi
+        inventore itaque tenetur tempora earum qui sint quasi, alias, officiis expedita, iste iure repellat!
+        Ipsa iure rerum impedit, quae, soluta odio aliquid ducimus labore nisi amet placeat quod. Cum esse iste iusto,
+        illum, culpa ducimus dolore animi quaerat similique aut debitis aliquid itaque ipsam.
+    </p>
+
+    <p class="parrafo">
+        CLASE - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam incidunt beatae soluta esse. Fuga a
+        excepturi
+        inventore itaque tenetur tempora earum qui sint quasi, alias, officiis expedita, iste iure repellat!
+        Ipsa iure rerum impedit, quae, soluta odio aliquid ducimus labore nisi amet placeat quod. Cum esse iste iusto,
+        illum, culpa ducimus dolore animi quaerat similique aut debitis aliquid itaque ipsam.
+    </p>
+
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam incidunt beatae soluta esse. Fuga a excepturi
+        inventore itaque tenetur tempora earum qui sint quasi, alias, officiis expedita, iste iure repellat!
+        Ipsa iure rerum impedit, quae, soluta odio aliquid ducimus labore nisi amet placeat quod. Cum esse iste iusto,
+        illum, culpa ducimus dolore animi quaerat similique aut debitis aliquid itaque ipsam.
+        </pass=>
+
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam incidunt beatae soluta esse. Fuga a
+        excepturi
+        inventore itaque tenetur tempora earum qui sint quasi, alias, officiis expedita, iste iure repellat!
+        Ipsa iure rerum impedit, quae, soluta odio aliquid ducimus labore nisi amet placeat quod. Cum esse iste iusto,
+        illum, culpa ducimus dolore animi quaerat similique aut debitis aliquid itaque ipsam.
+    </p>
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------  SELECTORES DE ATRIBUTOS  ----------  -->
+
+    <h3 class="subtitle__ejercicio"> Selectores de Atributo </h3>
+    <ul>
+        <li> Primer Elemento </li>
+        <li href="https://udemy.antonydev.tech/jquery-de-cero-a-avanzado">
+            href="https://udemy.antonydev.tech/jquery-de-cero-a-avanzado" </li>
+        <li href="https://google.es"> google.es </li>
+        <li> Cuarto Elemento </li>
+    </ul>
+    <a href="#"> contiene un href="#" </a>
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------  SELECTORES DE POSICIÓN  ----------  -->
+
+    <h3 class="subtitle__ejercicio"> Selectores de Posición </h3>
+    <div>
+        <h4> Primer Elemento </h4>
+        <h4> Segundo Elemento </h4>
+        <h4> Tercer Elemento </h4>
+        <h4> Cuarto Elemento </h4>
+        <h5> Quinto elemento </h5>
+        <h5> Sexto elemento </h5>
+        <h5> Septimo elemento </h5>
+        <h5> Octavo elemento </h5>
+        <h5> Noveno elemento </h5>
+        <h5> Décimo elemento </h5>
+    </div>
+
+    <div class="btn__container">
+        <button class="btn-selector-eq"> selector :equ() </button>
+        <button class="btn-selector-gt"> selector :gt() </button>
+        <button class="btn-selector-lt"> selector :lt() </button>
+    </div>
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------  SELECTORES DE PARENTESCO  ----------  -->
+
+    <h3 class="subtitle__ejercicio"> Selectores de Parentesco </h3>
+
+    <img src="/02-selectores/selectores.png">
+
+    <div id="contenedor">
+
+        <div id="div1">
+            <p id="p1"> Párrafo 1 con una etiqueta <span> span </span> dentro </p>
+            <p id="p2"> Párrafo 2 </p>
+            <p id="p6"> Párrafo 6 </p>
+        </div>
+
+        <div id="div2">
+            <p id="p3">Párrafo 3</p>
+            <p id="p4">Párrafo 4</p>
+        </div>
+
+        <p id="p5">Párrafo 5</a>
+    </div>
+
+    <div class="btn__container">
+        <button class="btn-colorear" id="btn1"> #contenedor p </button>
+        <button class="btn-colorear" id="btn2"> #contenedor > p </button>
+        <button class="btn-colorear" id="btn3"> p#p1 ~ p </button>
+        <button class="btn-colorear" id="btn4"> p#p1 + p </button>
+        <button class="btn-colorear" id="btn5"> #p5, span </button>
+    </div>
+
+
+    <span class="separador"> </span>
+
+
+
+</section>
+
+<script src="./assets/jquery/core/jquery-3.7.1.min.js"> </script>
+<script src="../assets/js/renderPdfs.js"> </script>

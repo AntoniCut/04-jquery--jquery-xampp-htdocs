@@ -1,0 +1,336 @@
+<!--  ***************************************************  -->
+<!--  **********  /07-widgets/07-widgets.html  **********  -->
+<!--  ***************************************************  -->
+
+
+<style>
+    input {
+        width: 300px;
+        height: 40px;
+        padding-left: 10px;
+    }
+</style>
+
+
+<section class="ejercicio__container">
+
+    <h2 class="title__ejercicio"> 07 Widgets Interesantes </h2>
+
+    <span class="separador"> </span>
+
+    <div class="btn__container">
+        <button id="btnPdf1" class="btnPdf"> Plugins </button>
+        <button id="btnPdf2" class="btnPdf"> Plugins - Consideraciones </button>
+        <button class="btn-close-pdf"> Cerrar PDF </button>
+    </div>
+
+    
+
+    <!--  ----------  PDFs  ------------>
+    <embed id="Pdf1" class="pdf" src="./07-widgets/pdf/31-plugins.pdf" type="application/pdf" width="100%" height="750px">
+    <embed id="Pdf2" class="pdf" src="./07-widgets/pdf/40-cierre-plugins.pdf" type="application/pdf" width="100%" height="750px">
+
+    <span class="separador"> </span>
+
+
+    <!--  -------------------------------------------  -->
+    <!--  ----------  jQuery Plugin Color  ----------  -->
+    <!--  -------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Color Plugins </h3>
+
+    <div class="btn__container">
+        <button id="iniciarAnimacion"> Iniciar la Animación </button>
+    </div>
+
+    <div class="animacion-container1">
+        <div class="animacion-elemento1"> </div>
+    </div>
+    
+
+    <span class="separador"> </span>
+
+
+    <!--  -------------------------------------------  -->
+    <!--  ----------  jQuery Plugin Easing  ----------  -->
+    <!--  -------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Easing Plugins </h3>
+
+    <select id="easing-select">
+        <option value="linear">Linear</option>
+        <option value="swing">Swing</option>
+        <option value="easeInQuad">Ease In Quad</option>
+        <option value="easeOutQuad">Ease Out Quad</option>
+        <option value="easeInOutQuad">Ease In Out Quad</option>
+        <option value="easeInCubic">Ease In Cubic</option>
+        <option value="easeOutCubic">Ease Out Cubic</option>
+        <option value="easeInOutCubic">Ease In Out Cubic</option>
+        <option value="easeInQuart">Ease In Quart</option>
+        <option value="easeOutQuart">Ease Out Quart</option>
+        <option value="easeInOutQuart">Ease In Out Quart</option>
+        <option value="easeInSine">Ease In Sine</option>
+        <option value="easeOutSine">Ease Out Sine</option>
+        <option value="easeInOutSine">Ease In Out Sine</option>
+        <option value="easeInExpo">Ease In Expo</option>
+        <option value="easeOutExpo">Ease Out Expo</option>
+        <option value="easeInOutExpo">Ease In Out Expo</option>
+        <option value="easeInQuint">Ease In Quint</option>
+        <option value="easeOutQuint">Ease Out Quint</option>
+        <option value="easeInOutQuint">Ease In Out Quint</option>
+        <option value="easeInCirc">Ease In Circ</option>
+        <option value="easeOutCirc">Ease Out Circ</option>
+        <option value="easeInOutCirc">Ease In Out Circ</option>
+        <option value="easeInElastic">Ease In Elastic</option>
+        <option value="easeOutElastic">Ease Out Elastic</option>
+        <option value="easeInOutElastic">Ease In Out Elastic</option>
+        <option value="easeInBack">Ease In Back</option>
+        <option value="easeOutBack">Ease Out Back</option>
+        <option value="easeInOutBack">Ease In Out Back</option>
+        <option value="easeInBounce">Ease In Bounce</option>
+        <option value="easeOutBounce">Ease Out Bounce</option>
+        <option value="easeInOutBounce">Ease In Out Bounce</option>
+    </select>
+
+    <div class="btn__container">
+        <button id="bajar"> Bajar </button>
+        <button id="subir"> Subir </button>
+    </div>
+
+    <div class="animacion-container2">
+        <div class="animacion-elemento2"> 
+            Animame!!!
+        </div>
+    </div>
+    
+    <span class="separador"> </span>
+
+
+    <!--  --------------------------------------------  -->
+    <!--  ----------  jQuery Plugin Rotate  ----------  -->
+    <!--  --------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Rotate Plugins </h3>
+
+    <div class="btn__container">
+        <button id="btnRotate"> Iniciar Rotate </button>
+    </div>
+
+    <div class="animacion-container3">
+        <div class="animacion-elemento3"> </div>
+        <img src="./assets/img/gato.jpeg" class="image-rotate">
+        <div class="animacion-elemento4"> Anímame!!! </div>
+    </div>
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------------------------------------------  -->
+    <!--  ----------  jQuery Plugin $goMap()  ----------  -->
+    <!--  ----------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery $goMap() Plugins </h3>
+
+    <div id="mapa">
+       
+    </div>
+
+    <span class="separador"> </span>
+
+
+    <!--  ----------------------------------------------  -->
+    <!--  ----------  jQuery Plugin validate  ----------  -->
+    <!--  ----------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Validate Plugins </h3>
+
+    <form id="form1" name="form1" method="post" action="">
+		
+        <label> Nombre </label>
+		<input type="text" name="nombre" id="nombre"/><br><br>
+
+	    <label> Apellidos </label>
+	    <input type="text" name="apellidos" id="apellidos" /><br><br>
+
+	    <label> E-mail </label>
+	    <input type="text" name="email" id="email"/><br><br>
+
+	    <label> Edad </label>
+	    <input type="text" name="edad" id="edad"/><br><br>
+
+		<input type="submit" class="btn-submit"/>
+
+	</form>
+
+    <span class="separador"> </span>
+
+
+    <!--  -----------------------------------------------  -->
+    <!--  ----------  jQuery Plugin quicksand  ----------  -->
+    <!--  -----------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Quick Sand Plugins </h3>
+
+    <div id="botones">
+		<button id="btn-colores"> Colores </button>
+        <button id="btn-frutas"> Frutas </button>
+        <button id="btn-todos"> Todas </button>
+    </div>
+
+    <div id="tablas"> 
+        
+        <ul id="principal">
+            <li data-id="amarillo"> Amarillo </li>
+            <li data-id="rojo"> Rojo </li>
+            <li data-id="azul"> Azul </li>
+            <li data-id="pera"> Pera </li>
+            <li data-id="Manzana"> Manzana </li>
+            <li data-id="verde"> Verde </li>
+            <li data-id="platano"> Platano </li>
+        </ul>
+
+        <ul id="colores" style="display: none;">
+            <li data-id="amarillo"> Amarillo </li>
+            <li data-id="rojo"> Rojo </li>
+            <li data-id="azul"> Azul </li>
+            <li data-id="verde"> Verde </li>
+        </ul>
+
+        <ul id="frutas" style="display: none;">
+            <li data-id="pera"> Pera </li>
+            <li data-id="Manzana"> Manzana </li>
+            <li data-id="platano"> Platano </li>
+        </ul>
+
+        <ul id="todos" style="display: none;">
+            <li data-id="amarillo"> Amarillo </li>
+            <li data-id="rojo"> Rojo </li>
+            <li data-id="azul"> Azul </li>
+            <li data-id="verde"> Verde </li>
+            <li data-id="pera"> Pera </li>
+            <li data-id="Manzana"> Manzana </li>
+            <li data-id="platano"> Platano </li>
+        </ul>
+
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ---------------------------------------------  -->
+    <!--  ----------  jQuery Plugin Kiwicks  ----------  -->
+    <!--  ---------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Kiwicks Plugins </h3>
+
+    <ul id="example1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  -----------------------------------------------  -->
+    <!--  ----------  jQuery Plugin Cycle All  ----------  -->
+    <!--  -----------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> jQuery Cycle All Plugins </h3>
+
+    <h4> Efecto </h4>
+    <br>
+    <select id="select-cycle-effect">
+        <option value="blindX"> blindX </option>
+        <option value="blindY"> blindY </option>
+        <option value="blindZ"> blindZ </option>
+        <option value="cover"> cover </option>
+        <option value="curtainX"> curtainX </option>
+        <option value="curtainY"> curtainY </option>
+        <option value="fade"> fade </option>
+        <option value="fadeZoom"> fadeZoom </option>
+        <option value="growX"> growX </option>
+        <option value="growY"> growY </option>
+        <option value="scrollUp"> scrollUp </option>
+        <option value="scrollDown"> scrollDown </option>
+        <option value="scrollLeft"> scrollLeft </option>
+        <option value="scrollRight"> scrollRight </option>
+        <option value="scrollHorz"> scrollHorz </option>
+        <option value="scrollVert"> scrollVert </option>
+        <option value="shuffle"> shuffle </option>
+        <option value="slideX"> slideX </option>
+        <option value="slideY"> slideY </option>
+        <option value="toss"> toss </option>
+        <option value="turnUp"> turnUp </option>
+        <option value="turnDown"> turnDown </option>
+        <option value="turnLeft"> turnLeft </option>
+        <option value="turnRight"> turnRight </option>
+        <option value="uncover"> uncover </option>
+        <option value="wipe"> wipe </option>
+        <option value="zoom"> zoom </option>
+    </select>
+    
+    <br> <br>
+
+    <h4> Easing </h4>
+    <br>
+    <select id="easing-select2">
+        <option value="linear">Linear</option>
+        <option value="swing">Swing</option>
+        <option value="easeInQuad">Ease In Quad</option>
+        <option value="easeOutQuad">Ease Out Quad</option>
+        <option value="easeInOutQuad">Ease In Out Quad</option>
+        <option value="easeInCubic">Ease In Cubic</option>
+        <option value="easeOutCubic">Ease Out Cubic</option>
+        <option value="easeInOutCubic">Ease In Out Cubic</option>
+        <option value="easeInQuart">Ease In Quart</option>
+        <option value="easeOutQuart">Ease Out Quart</option>
+        <option value="easeInOutQuart">Ease In Out Quart</option>
+        <option value="easeInSine">Ease In Sine</option>
+        <option value="easeOutSine">Ease Out Sine</option>
+        <option value="easeInOutSine">Ease In Out Sine</option>
+        <option value="easeInExpo">Ease In Expo</option>
+        <option value="easeOutExpo">Ease Out Expo</option>
+        <option value="easeInOutExpo">Ease In Out Expo</option>
+        <option value="easeInQuint">Ease In Quint</option>
+        <option value="easeOutQuint">Ease Out Quint</option>
+        <option value="easeInOutQuint">Ease In Out Quint</option>
+        <option value="easeInCirc">Ease In Circ</option>
+        <option value="easeOutCirc">Ease Out Circ</option>
+        <option value="easeInOutCirc">Ease In Out Circ</option>
+        <option value="easeInElastic">Ease In Elastic</option>
+        <option value="easeOutElastic">Ease Out Elastic</option>
+        <option value="easeInOutElastic">Ease In Out Elastic</option>
+        <option value="easeInBack">Ease In Back</option>
+        <option value="easeOutBack">Ease Out Back</option>
+        <option value="easeInOutBack">Ease In Out Back</option>
+        <option value="easeInBounce">Ease In Bounce</option>
+        <option value="easeOutBounce">Ease Out Bounce</option>
+        <option value="easeInOutBounce">Ease In Out Bounce</option>
+    </select>
+    
+    <br> <br>
+    <button id="btn-cycle-effect"> Efecto </button>
+    <br> <br>
+
+    <div id="cycleContainer">
+        <img src="../assets/img/gato.jpeg" width="200" height="200" />
+        <img src="../assets/img/oso-pardo.jpeg" width="200" height="200" />
+        <img src="../assets/img/perro.jpeg" width="200" height="200" />
+    </div>
+    
+    <span class="separador"> </span>
+
+</section>
+
+
+<!-- <script src="../assets/jquery/core/jquery-3.7.1.min.js" defer> </script> -->
+<script src="../assets/jquery/core/jquery-1.11.1.min.js" defer> </script>
+
+<script src="../assets/js/renderPdfs.js"> </script>
+<script src="../assets/plugins/jquery.color-2.1.0.min.js" defer> </script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script> -->
+<script src="../assets/plugins/jquery.easing.1.3.min.js"> </script>
+
+<script src="../assets/plugins/jquery.rotate.js" defer> </script>
+<script src="../assets/plugins/goMap-1.3.3.min.js" defer> </script>
+<script src="../assets/plugins/jquery.validate.min.js" defer> </script>
+<script src="../assets/plugins/jquery.quicksand.js" defer> </script>
+<script src="../assets/plugins/jquery.kwicks.min.js" defer> </script>
+<script src="../assets/plugins/jquery.cycle.all.js" defer> </script>

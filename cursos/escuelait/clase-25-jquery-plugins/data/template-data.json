@@ -1,0 +1,4 @@
+{
+    "title": "Titulo desde JSON",
+    "body": "Cuerpo obtenido con $.getJSON desde una URL."
+}

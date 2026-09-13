@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Jquery Validate</title> 
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/validate.js"></script>
+
+	<script src="js/plugin_validate.js" type="text/javascript"></script>
+	<style type="text/css">
+		#form1 label.error{
+			color: red;
+			font-size: 14px;
+			display: block;
+		}
+
+		#form1 input.error{
+			border:2px solid red;
+		}
+	</style>
+</head>
+<body>
+	<form id="form1" name="form1" method="post" action="">
+		<label>Nombre</label>
+		<input type="text" name="nombre" id="nombre"/><br><br>
+
+	    <label>Apellidos</label>
+	    <input type="text" name="apellidos" id="apellidos" /><br><br>
+
+	    <label>E-mail</label>
+	    <input type="text" name="email" id="email"/><br><br>
+
+	    <label>Edad</label>
+	    <input type="text" name="edad" id="edad"/><br><br>
+
+		<input type="submit"/>
+
+	</form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 03 - Buscador </title>
+</head>
+
+<body>
+    <h1> 03 - Buscador </h1>
+    <form id="f1" action="#">
+        Producto: <input type="text" name="producto" id="producto">
+        <br>
+        Descripción: <input type="text" name="descripcion" id="descripcion">
+        <br>
+        <input type="submit" value="buscar">
+    </form>
+    <div id="respuesta">
+
+    </div>
+
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <script>
+
+        console.log("jQuery version: " + $.fn.jquery);
+
+        $(function () {
+
+            $("#f1").on("submit", function (e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    data: $(this).serialize(),
+                    url: "buscar.php",
+                    type: "post",
+                    dataType: "html",
+                    success: function (respuesta) {
+                        $("#respuesta").html(respuesta);
+                    }
+                });
+
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

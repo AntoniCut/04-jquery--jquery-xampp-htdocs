@@ -1,0 +1,501 @@
+<!--  *******************************************************  -->
+<!--  **********  /08-jquery-ui/08-jquery-ui.html  **********  -->
+<!--  *******************************************************  -->
+
+
+<section class="ejercicio__container">
+
+    <h2 class="title__ejercicio"> 08 jQuery UI </h2>
+
+    <span class="separador"> </span>
+
+
+    
+    <!--  ------------------------------------  -->
+    <!--  ----------  Introducción  ----------  -->
+    <!--  ------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Introducción </h3>
+
+
+    <h4> Calendar </h4>
+    <br>
+
+    <input type="text" id="calendario" title="calendario">
+
+    <span class="separador"> </span>
+
+
+    <!--  --------------------------------------------  -->
+    <!--  ----------  Draggable y Droppable ----------  -->
+    <!--  --------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Draggable y Droppable </h3>
+
+    <div class="containerDivs">
+
+        <div id="contenedorDraggable" title="Elemento Draggable">
+            <p> Arrastra este elemento </p>
+        </div>
+
+        <div id="contenedorDroppable" title="Elemento Droppable">
+            <p> Suelta Aqui el Elemento </p>
+        </div>
+
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ------------------------------------------  -->
+    <!--  ----------  Juego Drag and Drop ----------  -->
+    <!--  ------------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Juego Drag and Drog </h3>
+    <h3> Arrastra cada bandera a su lugar </h3>
+    <br>
+
+    <div id="juegoContainer" title="Juego Drag and Drop">
+
+
+        <img src="../assets/img/bandera-belgica.png" id="alemania" class="img__bandera">
+        <img src="../assets/img/bandera-españa.png" id="espanna" class="img__bandera">
+        <img src="../assets/img/bandera-francia.png" id="francia" class="img__bandera">
+        <img src="../assets/img/bandera-italia.png" id="italia" class="img__bandera">
+
+
+        <div id="recuadros">
+            <div id="recAle" class="rec-soltar" data-name="Alemania"> Alemania </div>
+            <div id="recEsp" class="rec-soltar" data-name="España"> España </div>
+            <div id="recFra" class="rec-soltar" data-name="Francia"> Francia </div>
+            <div id="recIta" class="rec-soltar" data-name="Italia"> Italia </div>
+        </div>
+
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ---------------------------------  -->
+    <!--  ----------  Selectable ----------  -->
+    <!--  ---------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Selectable y Sortable </h3>
+
+    <div class="listas__container">
+
+        <ul id="listaMeses" title="Lista Meses del Año">
+            <li> Enero </li>
+            <li> Febrero </li>
+            <li> Marzo </li>
+            <li> Abril </li>
+            <li> Mayo </li>
+            <li> Junio </li>
+            <li> Julio </li>
+            <li> Agosto </li>
+            <li> Septiembre </li>
+            <li> Octubre </li>
+            <li> Noviembre </li>
+            <li> Diciembre </li>
+        </ul>
+
+        <ul id="listaDias" title="Lista dias de la semana">
+            <li> Lunes </li>
+            <li> Martes </li>
+            <li> Miercoles </li>
+            <li> Jueves </li>
+            <li> Viernes </li>
+            <li> Sábado </li>
+            <li> Domingo </li>
+        </ul>
+
+    </div>
+
+
+    <span class="separador"> </span>
+
+
+
+    <!--  --------------------------------  -->
+    <!--  ----------  Resizable ----------  -->
+    <!--  --------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Resizable </h3>
+
+    <div class="parrafo__container">
+        <p title="Párrafo Resizable">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat porro distinctio velit eum nulla.
+            Possimus excepturi amet enim incidunt tempora beatae,
+            quisquam inventore facere nihil atque perferendis vero architecto ipsam?
+        </p>
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  -------------------------------  -->
+    <!--  ----------  Acordeon ----------  -->
+    <!--  -------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Acordeon </h3>
+
+    <div id="acordeonContainer" title="Acordeon">
+
+        <h3> Título 1 </h3>
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat porro distinctio velit eum nulla.
+                Possimus excepturi amet enim incidunt tempora beatae,
+                quisquam inventore facere nihil atque perferendis vero architecto ipsam?
+            </p>
+        </div>
+
+        <h3> Título 2 </h3>
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat porro distinctio velit eum nulla.
+                Possimus excepturi amet enim incidunt tempora beatae,
+                quisquam inventore facere nihil atque perferendis vero architecto ipsam?
+            </p>
+        </div>
+
+        <h3> Título 3 </h3>
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat porro distinctio velit eum nulla.
+                Possimus excepturi amet enim incidunt tempora beatae,
+                quisquam inventore facere nihil atque perferendis vero architecto ipsam?
+            </p>
+        </div>
+
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ------------------------------------  -->
+    <!--  ----------  Autocompletar ----------  -->
+    <!--  ------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Autocompletar </h3>
+
+    <input type="text" id="caja" title="Autocompletado">
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ------------------------------  -->
+    <!--  ----------  Botones ----------  -->
+    <!--  ------------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Botones </h3>
+
+    <!--  -----  Boton solo  -----  -->
+    <div class="botonesUI__container" title="Botón">
+        <h4> Boton Normal </h4>
+        <button id="boton"> Enviar </button>
+    </div>
+
+    <!--  -----  Botones CheckBox  -----  -->
+    <div class="botonesUI__container" title="Boton CheckBox">
+        <h4> Boton Check Box </h4>
+        <input type="checkbox" id="on" value="on">
+        <label for="on"> On / Off </label>
+    </div>
+
+
+    <!--  -----  Botones CheckBox en Grupo  -----  -->
+    <div class="botonesUI__container" title="Botones CheckBox en Grupo">
+        <h4> Boton Check Box en Grupo </h4>
+        <div id="deportes">
+            <input type="checkbox" id="opcion1" value="futbol">
+            <label for="opcion1"> Futbol </label>
+
+            <input type="checkbox" id="opcion2" value="Baloncesto">
+            <label for="opcion2"> Baloncesto </label>
+
+            <input type="checkbox" id="opcion3" value="voleibol">
+            <label for="opcion3"> Voleibol </label>
+
+            <input type="checkbox" id="opcion4" value="tenis">
+            <label for="opcion4"> Tenis </label>
+        </div>
+    </div>
+
+
+    <!--  -----  Botones Radio Buttons  -----  -->
+    <div class="botonesUI__container" title="Botones Radio Buttons">
+        <h4> Boton de Radio </h4>
+        <div id="radio">
+            <input type="radio" name="radio" id="opcion5" value="soltero">
+            <label for="opcion5"> Soltero </label>
+
+            <input type="radio" name="radio" id="opcion6" value="casado">
+            <label for="opcion6"> Casado </label>
+
+            <input type="radio" name="radio" id="opcion7" value="divorciado">
+            <label for="opcion7"> Divorciado </label>
+
+            <input type="radio" name="radio" id="opcion8" value="viudo">
+            <label for="opcion8"> Viudo </label>
+        </div>
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ---------------------------------  -->
+    <!--  ----------  Calendario ----------  -->
+    <!--  ---------------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Calendario </h3>
+
+    <div class="calendars__container">
+        <h4> Mostrar, Seleccionar Todos los Meses </h4>
+        <input type="text" id="calendar1" title="Calendario">
+    </div>
+
+    <div class="calendars__container">
+        <h4> Cambiar mes, año, mínimo y máximo de dias </h4>
+        <input type="text" id="calendar2" title="Calendario">
+    </div>
+
+    <div class="calendars__container">
+        <h4> Mostrar Semanas, Nº de calendarios por meses </h4>
+        <input type="text" id="calendar3" title="Calendario">
+    </div>
+
+    <div class="calendars__container">
+        <h4> Mostrar Botón - Pulsar en el Gato </h4>
+        <input type="text" id="calendar4" title="Calendario">
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  -------------------------------  -->
+    <!--  ----------  Dialogos ----------  -->
+    <!--  -------------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Ventanas de Dialogos </h3>
+
+    <h4> Se Posiciona Arriba de la Página </h4>
+
+    <div id="ventana" title="Advertencia">
+        <br>
+        <p title="Ventana de Dialogo"> Esta página contiene material solo para adultos. </p>
+        <br>
+        <p title="Ventana de Dialogo"> Continua si eres mayor de 18 años. </p>
+    </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ----------------------------  -->
+    <!--  ----------  Menús ----------  -->
+    <!--  ----------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Menús </h3>
+
+    <ul id="listaMenu" title="Menús">
+        <li> <a href="#"> <span class="ui-icon ui-icon-image"> </span> ¿Quienes somos? </a> </li>
+        <li> <a href="#"> <span class="ui-icon ui-icon-star"></span> Historia </a> </li>
+        <li> <a href="#"> ¿Donde estamos? </a> </li>
+        <li>
+            <a href="#"> Productos </a>
+            <ul id="subgrupo">
+                <li> <a> Péines </a> </li>
+                <li> <a> Cepillos </a> </li>
+                <li> <a> Jabones </a> </li>
+            </ul>
+
+        </li>
+        <li> <a href="#"> Servicios </a>
+        <li>
+    </ul>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  -------------------------------------------------------  -->
+    <!--  ----------  Barras de Progreso, Deslizadores ----------  -->
+    <!--  -------------------------------------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Barras de Progreso, Deslizadores </h3>
+
+    <input type="number" id="valueProgressBar" min="1" max="100" value="50" title="Valores de la Barra de Progreso">
+    <br>
+    <div id="progressBar" title="Barra de Progreso"> </div> <br>
+
+    <label for="comensales"> Nº de comensales </label>
+    <input type="text" id="comensales" title="Valores del Slider"> <br>
+    <div id="slider" title="Slider"> </div>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ------------------------------  -->
+    <!--  ----------  Spinner ----------  -->
+    <!--  ------------------------------  -->
+
+    <h3 class="subtitle__ejercicio"> Spinner </h3>
+
+    <input type="text" id="spinner" title="Valores del Spinner"> <br>
+
+    <span class="separador"> </span>
+
+
+
+    <!--  --------------------------------  -->
+    <!--  ----------  Tooltips  ----------  -->
+    <!--  --------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Tooltips </h3>
+
+    <img src="./assets/img/gato.jpeg" id="imagenGato" title="Imagen de un Gato">
+
+    <span class="separador"> </span>
+
+
+
+    <!--  ---------------------------------------  -->
+    <!--  ----------  Pestañas o Tabs  ----------  -->
+    <!--  ---------------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Tabs </h3>
+
+    <section class="tabs__container">
+
+        <div id="tabs" title="Secciones">
+
+            <ul>
+                <li> <a href="#seccion1"> Sección 1 </a> </li>
+                <li> <a href="#seccion2"> Sección 2 </a> </li>
+                <li> <a href="#seccion3"> Sección 3 </a> </li>
+                <li> <a href="#seccion4"> Sección 4 </a> </li>
+                <li> <a href="#seccion5"> Sección 5 </a> </li>
+            </ul>
+
+            <div id="seccion1">
+                ----- SECCIÓN 1 ----- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab numquam odit
+                accusantium? Nobis sed,
+                quisquam in consectetur rem expedita voluptates laudantium, accusantium natus harum facilis sunt,
+                nemo quae corrupti aspernatur.
+            </div>
+
+            <div id="seccion2">
+                ----- SECCIÓN 2 ----- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab numquam odit
+                accusantium? Nobis sed,
+                quisquam in consectetur rem expedita voluptates laudantium, accusantium natus harum facilis sunt,
+                nemo quae corrupti aspernatur.
+            </div>
+
+            <div id="seccion3">
+                ----- SECCIÓN 3 ----- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab numquam odit
+                accusantium? Nobis sed,
+                quisquam in consectetur rem expedita voluptates laudantium, accusantium natus harum facilis sunt,
+                nemo quae corrupti aspernatur.
+            </div>
+
+            <div id="seccion4">
+                ----- SECCIÓN 4 ----- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab numquam odit
+                accusantium? Nobis sed,
+                quisquam in consectetur rem expedita voluptates laudantium, accusantium natus harum facilis sunt,
+                nemo quae corrupti aspernatur.
+            </div>
+
+            <div id="seccion5">
+                ----- SECCIÓN 5 ----- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab numquam odit
+                accusantium? Nobis sed,
+                quisquam in consectetur rem expedita voluptates laudantium, accusantium natus harum facilis sunt,
+                nemo quae corrupti aspernatur.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--  -------------------------------  -->
+    <!--  ----------  Efectos  ----------  -->
+    <!--  -------------------------------  -->
+    <h3 class="subtitle__ejercicio"> Efectos de Easing y Animación </h3>
+
+    <section class="efectos-ui__container">
+
+        <select id="effect-select">
+            <option value="fade"> Fade </option>
+            <option value="drop"> Drop </option>
+            <option value="highlight">Highlight</option>
+            <option value="bounce">Bounce</option>
+            <option value="shake">Shake</option>
+            <option value="scale">Scale</option>
+            <option value="explode">Explode</option>
+            <option value="puff">Puff</option>
+            <option value="pulsate">Pulsate</option>
+            <option value="slide">Slide</option>
+            <option value="blind">Blind</option>
+            <option value="clip">Clip</option>
+            <option value="fold">Fold</option>
+        </select>
+        
+        <select id="easing-select">
+            <option value="linear">Linear</option>
+            <option value="swing">Swing</option>
+            <option value="easeInQuad">Ease In Quad</option>
+            <option value="easeOutQuad">Ease Out Quad</option>
+            <option value="easeInOutQuad">Ease In Out Quad</option>
+            <option value="easeInCubic">Ease In Cubic</option>
+            <option value="easeOutCubic">Ease Out Cubic</option>
+            <option value="easeInOutCubic">Ease In Out Cubic</option>
+            <option value="easeInQuart">Ease In Quart</option>
+            <option value="easeOutQuart">Ease Out Quart</option>
+            <option value="easeInOutQuart">Ease In Out Quart</option>
+            <option value="easeInSine">Ease In Sine</option>
+            <option value="easeOutSine">Ease Out Sine</option>
+            <option value="easeInOutSine">Ease In Out Sine</option>
+            <option value="easeInExpo">Ease In Expo</option>
+            <option value="easeOutExpo">Ease Out Expo</option>
+            <option value="easeInOutExpo">Ease In Out Expo</option>
+            <option value="easeInQuint">Ease In Quint</option>
+            <option value="easeOutQuint">Ease Out Quint</option>
+            <option value="easeInOutQuint">Ease In Out Quint</option>
+            <option value="easeInCirc">Ease In Circ</option>
+            <option value="easeOutCirc">Ease Out Circ</option>
+            <option value="easeInOutCirc">Ease In Out Circ</option>
+            <option value="easeInElastic">Ease In Elastic</option>
+            <option value="easeOutElastic">Ease Out Elastic</option>
+            <option value="easeInOutElastic">Ease In Out Elastic</option>
+            <option value="easeInBack">Ease In Back</option>
+            <option value="easeOutBack">Ease Out Back</option>
+            <option value="easeInOutBack">Ease In Out Back</option>
+            <option value="easeInBounce">Ease In Bounce</option>
+            <option value="easeOutBounce">Ease Out Bounce</option>
+            <option value="easeInOutBounce">Ease In Out Bounce</option>
+        </select>
+
+        <button id="apply-effect-easing"> Aplicar Effect and Easing </button>
+
+        <div id="efectoUI"> 
+            <!--  ----------  Efectos y Animaciones sobre este DIV  ----------  -->
+        </div>
+
+        <div id="ventanaEfectos" title="Ventana de Efecto">
+            
+            <!--  ----------  Efectos y Animaciones sobre este DIV  ----------  -->
+            <p> Ventana con Efecto Bounce al Mostrarse. </p>
+            <br>
+            <p> y Efecto Explode al Cerrar. </p>
+        </div>
+
+    </section>
+
+    <span class="separador"> </span>
+
+</section>
+
+
+<script src="./assets/jquery/core/jquery-1.11.1.min.js" defer> </script>
+<script src="./assets/jquery/ui/jquery-ui-1.12.1.min.js" defer> </script>

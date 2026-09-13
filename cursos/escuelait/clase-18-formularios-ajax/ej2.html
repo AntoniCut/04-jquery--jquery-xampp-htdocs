@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Curso de jQuery</title>
+</head>
+<body>
+    <form action="enviar.php" id="f1" method=post>
+        Nombre: <input type="text" name="nombre" id="nombre">
+        <br>
+        email: <input type="text" name="email" id="email">
+        <br>
+        Intereses <textarea name="intereses" id="intereses"></textarea>
+        <br>
+        Sexo: <select name="sexo">
+            <option value="H">Hombre</option>
+            <option value="M">Mujer</option>
+        </select>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <div id="resultado">haz click</div>
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function(){
+      		//load más fácil
+      		
+          $("#f1").on("submit", function(e){
+              e.preventDefault();
+              var form = $(this);
+              var url = form.attr("action");
+              var datos = form.serialize();
+              $.post(url,datos,function(respuesta){
+                $("#resultado").html(respuesta);
+              })
+          });
+        
+        });
+    </script>
+</body>
+</html>

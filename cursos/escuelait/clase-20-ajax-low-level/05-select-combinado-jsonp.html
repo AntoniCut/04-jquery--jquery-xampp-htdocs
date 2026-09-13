@@ -1,0 +1,108 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 05 - Select combinado JSONP </title>
+</head>
+
+<body>
+    <h1> 05 - Select combinado JSONP </h1>
+    
+    <form id="f1" action="#">
+        
+        Escoge el país:
+        <select id="pais" name="pais">
+            <option value="-" selected>Por favor, seleccione un país</option>
+            <option value="ar">Argentina</option>
+            <option value="br">Brasil</option>
+            <option value="es">España</option>
+            <option value="mx">México</option>
+        </select>
+        
+        <br>
+        
+        Escoge la provincia:
+        <select id="provincia" name="provincia"></select>
+
+        <p id="resultado"></p>
+
+    </form>
+
+
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <script>
+
+        console.log("jQuery version: " + $.fn.jquery);
+
+
+        $(function () {
+
+            var pais = $("#pais");
+            var prov = $("#provincia");
+
+            pais.on("change", cambiarSelect);
+
+            function cambiarSelect() {
+
+
+                var codPais = pais.val();
+
+                $.ajax({
+
+                    url: "ciudades-paises-json.php",
+
+                    data: {
+                        pais: codPais
+                    },
+
+                    type: "GET",
+                    dataType: "jsonp",
+
+                    success: function (respuesta) {
+
+                        $("#resultado").empty();
+                        console.log("\n\nnombre del pais seleccionado: " + pais.find("option:selected").text());
+
+                        prov.empty();
+
+
+                        for (indice in respuesta) {
+
+                            console.log(respuesta[indice]);
+
+                            $("<option>")
+                                .val(respuesta[indice].cod)
+                                .text(respuesta[indice].value)
+                                .appendTo(prov);
+                        }
+                    },
+
+                    beforeSend: function () {
+                        prov.empty();
+                        prov.append("<option>Cargando provincias, por favor, espere...</option>");
+                        //$("#resultado").append("<option>Cargando provincias, por favor, espere...</option>");
+                    },
+
+                    complete: function () {
+                        console.log("\ncomplete: la peticion ha finalizado");
+                    },
+
+                    cache: false,
+
+                    error: function (objajax, status, excepcion) {
+                        console.log('\n')
+                        console.error("error: " + status, " / ", excepcion);
+                    }
+
+                });
+            }
+
+            cambiarSelect();
+        });
+
+    </script>
+</body>
+
+</html>

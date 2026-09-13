@@ -1,0 +1,17 @@
+body {
+    margin-left: 15px;
+}
+
+#capa {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    background-color: #494;
+    font-size: 3em;
+    width: 70px;
+    height: 70px;
+    /* margin-left: 15px; */
+    border-radius: 50%;
+}

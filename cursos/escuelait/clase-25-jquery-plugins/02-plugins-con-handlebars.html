@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml" />
+    <title>Clase 25 - jQuery Plugins - Plugins con Handlebars</title>
+
+    <script src="../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+    <script src="../../../assets/libs/handlebars.min.js"></script>
+    
+    <script src="plugins/jquery.templatize.js"></script>
+    <script src="js/plugins-con-handlebars.js"></script>
+    
+</head>
+
+<body>
+
+    <h1>Clase 25 - 02 - Plugins con Handlebars - jQuery Plugins</h1>
+
+
+    <!--  -----  ejemplo con handlebars y objeto JSON  -----  -->
+    <h3>Contexto como objeto</h3>
+    <div id="templateTarget"> </div>
+
+    <br><br>
+
+    <!--  -----  ejemplo con handlebars y URL JSON  -----  -->
+    <h3>Contexto desde URL JSON</h3>
+    <div id="templateTargetAjax"> </div>
+
+    <script id="template" type="text/x-handlebars-template">
+
+        <div> Template de Handlebars </div>
+        <div>
+            <h4> {{title}} </h4>
+            <p> {{body}} </p>
+        </div>
+
+    </script>
+
+</body>
+
+</html>

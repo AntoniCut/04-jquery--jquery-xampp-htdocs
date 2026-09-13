@@ -1,0 +1,10 @@
+{
+    "name": "jquery",
+    "private": true,
+    "devDependencies": {
+        "@types/jquery": "^3.5.33"
+    },
+    "dependencies": {
+        "handlebars": "^4.7.9"
+    }
+}

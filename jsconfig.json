@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "noEmit": true,
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "strict": false,
+        "strictNullChecks": false,
+        "noImplicitAny": false,
+        "skipLibCheck": true,
+        "typeRoots": ["./node_modules/@types"]
+    },
+    "include": [
+        "cursos/escuelait/**/*.js",
+        "types/**/*.d.ts",
+        "desarrollowebcom/**/*.js"
+    ],
+    "exclude": ["node_modules", "**/node_modules/**"]
+}

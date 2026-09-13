@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 02 - Ajax Load Script </title>
+</head>
+
+<body>
+    <h1> 02 - Ajax Load Script </h1>
+    <div id="capa">click</div>
+    <div id="respuesta"></div>
+    
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    
+    <script>
+        console.log("jQuery version: " + $.fn.jquery);
+        
+        $(function () {
+            $("#capa").on("click", function () {
+
+                $.ajax({
+                    url: "script.js",
+                    dataType: "script"
+                });
+
+            })
+        });
+    </script>
+</body>
+
+</html>

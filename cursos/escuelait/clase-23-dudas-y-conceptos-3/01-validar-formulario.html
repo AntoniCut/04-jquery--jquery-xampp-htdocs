@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml">
+
+    <title> 01 Validar Formulario - Clase 23 Dudas y Conceptos 3 </title>
+    
+    <!--  -----  libreria jQuery  -----  -->
+    <script src="../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+
+    <script src="js/01-validar-formulario.js"> </script>
+</head>
+
+
+<body>
+    
+    <h1>01 - Validar Formulario - 23 Dudas y Conceptos 3</h1>
+    
+    <form id="pedido">
+        
+        Producto <br>
+        <select name="producto" id="producto" class="form-control">
+            <option value=""> - Selecciona un producto - </option>
+            <option value="vino">Vino</option>
+            <option value="cava">Cava</option>
+        </select>
+
+        <br> <br>
+
+        Tipo <br>
+        <select name="tipo" id="tipo" class="form-control">
+            <option value=""> - Selecciona un tipo - </option>
+            <option value="tinto">Tinto</option>
+            <option value="blanco">Blanco</option>
+        </select>
+
+        <br> <br>
+
+        Tamaño <br>
+        <select name="tamano" id="tamano" class="form-control">
+            <option value=""> - Selecciona un tamaño - </option>
+            <option value="750ml">750ml</option>
+            <option value="1000ml">1000ml</option>
+            <option value="1500ml">1500ml</option>
+        </select>
+
+        <br> <br>
+
+        <input type="submit" value="Enviar">
+
+        <br> <br>
+
+        <div id="stock">
+            Aquí se mostrará el stock del producto seleccionado
+        </div>
+        
+        <br> <br>
+
+    </form>
+  
+
+</body>
+</html>

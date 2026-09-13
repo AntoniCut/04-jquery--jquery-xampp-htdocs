@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+<h1> Este es el t√≠tulo </h1>
+<p>Este es el texto, que est√° escrito con una etiqueta de p√°rrafo </p>
+=======
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+	<h1>Este es el tÌtulo</h1>
+	<p>Este es el texto, que est· escrito con una etiqueta de p·rrafo</p>
+</body>
+>>>>>>> 71622ca3be445bbac7439d606a7496f52479ab8d

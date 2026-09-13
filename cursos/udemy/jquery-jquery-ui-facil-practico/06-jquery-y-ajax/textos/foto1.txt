@@ -1,0 +1,1 @@
+<img src="./06-jquery-y-ajax/img/foto1.jpg">
