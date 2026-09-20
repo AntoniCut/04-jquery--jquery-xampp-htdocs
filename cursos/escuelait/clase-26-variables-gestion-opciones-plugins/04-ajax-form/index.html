@@ -1,0 +1,176 @@
+<!--
+    *  -------------------------------------------------------------------------------------------------------------------  *
+    *  -----  index.html  --  /cursos/escuelait/clase-26-variables-gestion-opciones-plugins/04-ajax-form/index.html  -----  *
+    *  -------------------------------------------------------------------------------------------------------------------  *
+-->
+<!doctype html>
+<html lang="es">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml" />
+    <title>Clase 26 - Variables de gestión de opciones en Plugins - 04 - Ajax Form </title>
+
+    <script src="../../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+   
+    <script src="jquery.ajax.form.js"></script>
+    <script src="jquery.basic-validation.js"></script>
+    
+    <script src="script.js"></script>
+
+    <style>
+        .basic-validation.is-invalid {
+            border: 1px solid #b00020;
+        }
+
+        .basic-validation-error {
+            display: block;
+            color: #b00020;
+        }
+        .error-message {
+            color: #b00020;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Clase 26 - 04 - Ajax Form - Variables de gestión de opciones en Plugins</h1>
+
+
+    <section>
+        <h2>Con valores por defecto</h2>
+        <p>Sin opciones: usa <code>action</code>, <code>method</code> y <code>data-ajaxform-target</code> del formulario.</p>
+
+        <form id="formDefault" action="enviar.php" method="post" data-ajaxform-target="#resultadoDefault">
+            <p>
+                <label for="nombreDefault">Nombre</label>
+                <input id="nombreDefault" name="nombre" type="text" value="Ana" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailDefault">Email</label>
+                <input id="emailDefault" name="email" type="email" value="ana@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoDefault"></p>
+    </section>
+
+
+    <section>
+        <h2>Solo target</h2>
+        <p>El destino se indica en las opciones.</p>
+
+        <form id="formTarget" action="enviar.php" method="post">
+            <p>
+                <label for="nombreTarget">Nombre</label>
+                <input id="nombreTarget" name="nombre" type="text" value="Luis" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailTarget">Email</label>
+                <input id="emailTarget" name="email" type="email" value="luis@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoTarget"></p>
+    </section>
+
+
+    <section>
+        <h2>Con type GET</h2>
+        <p>Sobrescribe el <code>method</code> del formulario.</p>
+
+        <form id="formGet" action="enviar.php" method="post">
+            <p>
+                <label for="nombreGet">Nombre</label>
+                <input id="nombreGet" name="nombre" type="text" value="Marta" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailGet">Email</label>
+                <input id="emailGet" name="email" type="email" value="marta@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoGet"></p>
+    </section>
+
+
+    <section>
+        <h2>Con onSuccess</h2>
+        <p>Colores del mensaje y callback al terminar el envío.</p>
+
+        <form id="formSuccess" action="enviar.php" method="post">
+            <p>
+                <label for="nombreSuccess">Nombre</label>
+                <input id="nombreSuccess" name="nombre" type="text" value="Paco" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailSuccess">Email</label>
+                <input id="emailSuccess" name="email" type="email" value="paco@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoSuccess"></p>
+        <p id="ajaxFormLog"></p>
+    </section>
+
+
+    <section>
+        <h2>Con onError</h2>
+        <p>URL inexistente para forzar el fallo de Ajax.</p>
+
+        <form id="formError" action="enviar.php" method="post">
+            <p>
+                <label for="nombreError">Nombre</label>
+                <input id="nombreError" name="nombre" type="text" value="Eva" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailError">Email</label>
+                <input id="emailError" name="email" type="email" value="eva@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoError" class="error-message"></p>
+    </section>
+
+
+    <section>
+        <h2>Con onAlways</h2>
+        <p>Se ejecuta al terminar la petición, vaya bien o mal.</p>
+
+        <form id="formAlways" action="enviar.php" method="post">
+            <p>
+                <label for="nombreAlways">Nombre</label>
+                <input id="nombreAlways" name="nombre" type="text" value="Nuria" class="basic-validation" />
+            </p>
+            <p>
+                <label for="emailAlways">Email</label>
+                <input id="emailAlways" name="email" type="email" value="nuria@ejemplo.com" class="basic-validation" />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="resultadoAlways"></p>
+        <p id="ajaxFormAlwaysLog"></p>
+    </section>
+
+    <br> <br> <br>
+
+</body>
+
+</html>
