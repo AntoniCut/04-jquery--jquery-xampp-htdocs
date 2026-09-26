@@ -1,0 +1,157 @@
+<!--
+    *  ----------------------------------------------------------------------------------------------------------------------------------------  *
+    *  -----  index.html  --  /cursos/escuelait/clase-27-tecnicas-para-desarrollo-de-plugins-complejos/01-advanced-validation/index.html  -----  *
+    *  ----------------------------------------------------------------------------------------------------------------------------------------  *
+-->
+<!doctype html>
+<html lang="es">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml" />
+    <title>Clase 27 - Técnicas para desarrollo de plugins complejos - 01 - Advanced Validation</title>
+
+    <script src="../../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+   
+    <script src="jquery.advanced-validation.js"></script>
+    
+    <script src="script.js"></script>
+
+    <style>
+        .basic-validation.is-invalid {
+            border: 1px solid #b00020;
+        }
+
+        .basic-validation-error {
+            display: block;
+            color: #b00020;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Clase 27 - 01 - Advanced Validation - Técnicas para desarrollo de plugins complejos</h1>
+
+
+    <section>
+        <h2>Con valores por defecto</h2>
+        <p>Sin opciones: al enviar, valida los campos con <code>data-basic-validation-required</code>.</p>
+        <p>El comentario lleva la clase <code>.basic-validation</code> pero no el data attribute, así que no se exige.</p>
+
+        <form id="formDefault" action="enviar.php" method="post">
+            <p>
+                <label for="nombreDefault">Nombre</label>
+                <input id="nombreDefault" name="nombre" type="text" value="Ana" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="telefonoDefault">Teléfono</label>
+                <input id="telefonoDefault" name="telefono" type="tel" value="600111222" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="comentarioDefault">Comentario</label>
+                <textarea id="comentarioDefault" name="comentario" class="basic-validation" rows="3"></textarea>
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+    </section>
+
+
+    <section>
+        <h2>Con hooks</h2>
+        <p><code>onInit</code> al crear el plugin. <code>onValidating</code>, <code>onIsValid</code>, <code>onIsNotValid</code> y <code>onValidated</code> al validar.</p>
+
+        <form id="formHooks" action="enviar.php" method="post">
+            <p>
+                <label for="nombreHooks">Nombre</label>
+                <input id="nombreHooks" name="nombre" type="text" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="telefonoHooks">Teléfono</label>
+                <input id="telefonoHooks" name="telefono" type="tel" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <button type="button" id="btnValidateHooks">Validar</button>
+            </p>
+        </form>
+        <p id="hooksInit"></p>
+        <p id="hooksState"></p>
+        <p id="hooksDone"></p>
+    </section>
+
+
+    <section>
+        <h2>Método isValid</h2>
+        <p>El botón llama a <code>validate</code> y después a <code>isValid</code>.</p>
+
+        <form id="formIsValid" action="enviar.php" method="post">
+            <p>
+                <label for="nombreIsValid">Nombre</label>
+                <input id="nombreIsValid" name="nombre" type="text" value="Luis" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="telefonoIsValid">Teléfono</label>
+                <input id="telefonoIsValid" name="telefono" type="tel" value="600333444" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <button type="button" id="btnIsValid">Comprobar</button>
+            </p>
+        </form>
+        <p id="isValidLog"></p>
+    </section>
+
+
+    <section>
+        <h2>Método option</h2>
+        <p>Lee y cambia <code>message</code>. Enviar con un campo vacío muestra el texto vigente.</p>
+
+        <form id="formOption" action="enviar.php" method="post">
+            <p>
+                <label for="nombreOption">Nombre</label>
+                <input id="nombreOption" name="nombre" type="text" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="telefonoOption">Teléfono</label>
+                <input id="telefonoOption" name="telefono" type="tel" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <button type="button" id="btnOptionRead">Leer mensaje</button>
+                <button type="button" id="btnOptionWrite">Cambiar mensaje</button>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="optionLog"></p>
+    </section>
+
+
+    <section>
+        <h2>Método destroy</h2>
+        <p>Antes de destruir, un envío vacío se queda en la página. Después, el formulario se envía sin validar.</p>
+
+        <form id="formDestroy" action="enviar.php" method="post">
+            <p>
+                <label for="nombreDestroy">Nombre</label>
+                <input id="nombreDestroy" name="nombre" type="text" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <label for="telefonoDestroy">Teléfono</label>
+                <input id="telefonoDestroy" name="telefono" type="tel" class="basic-validation" data-basic-validation-required="true" />
+            </p>
+            <p>
+                <button type="button" id="btnDestroy">Destruir</button>
+                <button type="submit">Enviar</button>
+            </p>
+        </form>
+        <p id="destroyLog"></p>
+    </section>
+
+
+</body>
+
+</html>
