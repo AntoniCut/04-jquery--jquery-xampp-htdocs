@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml">
+
+    <title> 06 Handlebars block expressions - Clase 24 Template System </title>
+
+    <link rel="stylesheet" href="css/template-system.css">
+        
+    <!--  -----  libreria jQuery  -----  -->
+    <script src="../../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+    <script src="../../../../assets/libs/handlebars.min.js"></script>
+    <script src="js/handlebars-helpers.js"> </script>
+    <script src="js/06-handlebars-block-expressions.js"> </script>
+
+</head>
+
+
+<body>
+    
+    <h1> 06 - Handlebars block expressions - Clase 24 Template System </h1>
+
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="body" placeholder="body">
+
+    <input type="button" id="myButton" value="Generar HTML">
+
+    <br> <br> <hr> <br> <br>
+
+    <div id="myDiv1"></div>
+    <textarea id="myTextarea1"></textarea>
+    <br>
+
+    <br> <hr> <br>
+
+    <div id="myDiv2"></div>
+    <textarea id="myTextarea2"></textarea>
+    <br>
+    
+
+    <script id="myTemplate1" type="text/x-handlebars-template">
+
+        <h2> Template Block Expressions 1 </h2>
+
+        <div>
+            {{toH1 title}}
+            <p>{{body}}</p>
+        </div>
+
+    </script>
+
+
+    <script id="myTemplate2" type="text/x-handlebars-template">
+        
+        <h2> Template Block Expressions 2 </h2>
+        
+        {{#toUl people}}
+            {{firstName}} 
+            {{lastName}}
+        {{/toUl}}
+        
+    </script>
+    
+
+</body>
+</html>

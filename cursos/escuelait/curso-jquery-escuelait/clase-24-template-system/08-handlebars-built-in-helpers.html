@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../../assets/favicon/jquery-favicon.svg" type="image/svg+xml">
+
+    <title> 08 Handlebars built in helpers - Clase 24 Template System </title>
+
+    <link rel="stylesheet" href="css/template-system.css">
+        
+    <!--  -----  libreria jQuery  -----  -->
+    <script src="../../../../assets/libs/jquery-4.0.0-beta.min.js"></script>
+    <script src="../../../../assets/libs/handlebars.min.js"></script>
+    <script src="js/handlebars-helpers.js"> </script>
+    <script src="js/08-handlebars-built-in-helpers.js"> </script>
+
+</head>
+
+
+<body>
+    
+    <h1> 08 - Handlebars built in helpers - Clase 24 Template System </h1>
+
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="id" placeholder="id">
+    <input type="text" id="author" placeholder="name">
+    <input type="text" id="body" placeholder="body">
+
+    <input type="button" id="myButton" value="Generar HTML">
+
+    <br> <br> <hr> <br> <br>
+
+    <div id="myDiv1"></div>
+    <textarea id="myTextarea1"></textarea>
+    
+    <br> <br> <hr> <br> <br>
+
+    <div id="myDiv2"></div>
+    <textarea id="myTextarea2"></textarea>
+    
+    <br> <br> <hr> <br> <br>
+
+    <div id="myDiv3"></div>
+    <textarea id="myTextarea3"></textarea>
+    <br>
+
+    
+    <script id="myTemplate1" type="text/x-handlebars-template">
+        
+        <h2> IF - Template Built In Helpers </h2>
+
+        {{!-- title --}}
+        <h3> 
+            {{#if title}} Title: {{title}} 
+            {{else}} No title provided {{/if}} 
+        </h3>
+        
+        {{!-- id --}}
+        <h3> 
+            {{#if id}} Id: {{id}} 
+            {{else}} No id provided {{/if}} 
+        </h3>
+        
+        {{!-- author --}}
+        <h3> 
+            {{#if author}} Author: {{author}} 
+            {{else}} No author provided {{/if}} 
+        </h3>
+        
+        {{!-- body --}}
+        <h3> 
+            {{#if body}} Body: {{body}} 
+            {{else}} No body provided {{/if}} 
+        </h3>
+              
+    </script>
+
+
+    <script id="myTemplate2" type="text/x-handlebars-template">
+        
+        <h2> EACH - Template Built In Helpers </h2>
+
+        {{!-- Recorrer el array de people --}}
+
+        {{#each people}}
+            <h3> {{lastName}}, {{firstName}} </h3>
+        {{/each}}
+
+    </script>
+
+
+    <script id="myTemplate3" type="text/x-handlebars-template">
+
+        <h2> EACH SELECT - Template Built In Helpers </h2>
+
+        {{!-- Recorrer el array de options --}}
+        <label for="mySelect">People</label>
+        <select id="mySelect">
+            {{#each options}}
+                <option value="{{firstName}}">{{lastName}}, {{firstName}}</option>
+            {{/each}}
+        </select>
+
+    </script>
+
+</body>
+</html>
+
