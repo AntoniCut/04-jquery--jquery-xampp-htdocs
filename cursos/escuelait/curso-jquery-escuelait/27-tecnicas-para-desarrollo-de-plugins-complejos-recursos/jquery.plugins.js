@@ -220,12 +220,13 @@
 
             $target.addClass(errorClass);
 
-            /** @type {HTMLSpanElement} - `mensaje bajo el campo` */
-            const error = document.createElement('span');
-            error.className = fieldErrorMessageClass;
-            error.setAttribute('role', 'alert');
-            error.textContent = message;
-            $target.after(error);
+            /** @type {JQuery<HTMLSpanElement>} - `mensaje bajo el campo` */
+            const $error = $('<span>')
+                .addClass(fieldErrorMessageClass)
+                .attr('role', 'alert')
+                .text(message);
+
+            $target.after($error);
         }
 
 
@@ -323,11 +324,13 @@
          * @return {AdvancedValidationOptions[K] | void} Valor de la opción al leer; nada al escribir.
          */
         function option(key, val) {
-            if (val) {
+
+            if (val !== undefined) {
                 options[key] = val;
-            } else {
-                return options[key];
+                return;
             }
+
+            return options[key];
         }
 
 
@@ -456,9 +459,9 @@
 
 
     /**
-     * ------------------------------------------
+     * ------------------------------------------------
      * -----  `$.fn.advancedValidation.defaults`  -----
-     * ------------------------------------------
+     * ------------------------------------------------
      * - Opciones por defecto del plugin.
      * @type {AdvancedValidationPlugin['defaults']}
      */

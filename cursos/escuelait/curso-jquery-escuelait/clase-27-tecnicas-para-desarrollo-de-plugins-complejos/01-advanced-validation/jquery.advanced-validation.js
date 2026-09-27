@@ -14,6 +14,9 @@
     /** - `clave de la instancia guardada en el elemento` */
     const dataKey = 'plugin_' + pluginName;
 
+    /** @type {string} - `clase del mensaje bajo campos .advanced-validation` */
+    const advancedErrorMessageClass = 'advanced-validation-error-message';
+
 
     /**
      * ---------------------------
@@ -23,7 +26,7 @@
      * @type {Required<AdvancedValidationOptions>}
      */
     const defaults = {
-        selector: '.basic-validation',
+        selector: '.basic-validation, .advanced-validation',
         errorClass: 'is-invalid',
         message: 'Campo obligatorio',
         onInit: () => {},
@@ -40,7 +43,6 @@
      * -----  `createPlugin(element, options)`  -----
      * ----------------------------------------------
      * - Crea la instancia del plugin con el revealing module.
-     * - Los métodos públicos se guardan en `$.data` del formulario.
      * @param {HTMLFormElement} element - Formulario que dispara el plugin.
      * @param {AdvancedValidationOptions} [options] - Opciones del plugin.
      * @return {AdvancedValidationApi} - Métodos públicos de la instancia.
@@ -61,19 +63,16 @@
          * -------------------------
          * -----  `isValid()`  -----
          * -------------------------
-         * - Lee si la última validación del formulario fue correcta.
-         * @return {boolean | undefined} - `true` si es válido, `undefined` si aún no se ha validado.
+         * @return {boolean | undefined} - Resultado de la última validación.
          */
-        const isValid = () => {
-            return /** @type {boolean | undefined} */ ($el.data('basic-validation-isvalid'));
-        };
+        const isValid = () =>  /** @type {boolean | undefined} */ ($el.data('basic-validation-isvalid'));
+        
 
 
         /**
          * ---------------------------------
          * -----  `setIsValid(value)`  -----
          * ---------------------------------
-         * - Guarda el resultado de la validación en el formulario.
          * @param {boolean} value - Resultado de la validación.
          * @return {void}
          */
@@ -83,54 +82,217 @@
 
 
         /**
+         * ----------------------------------------------------
+         * -----  `getAdvancedFieldErrorMessage($field)`  -----
+         * ----------------------------------------------------
+         * - Reglas `data-advanced-validation-*` en campos `.advanced-validation`.
+         * @param {JQuery<HTMLInputElement | HTMLTextAreaElement>} $field - Campo a validar.
+         * @return {string | null} - Mensaje de error o `null` si es válido.
+         */
+        const getAdvancedFieldErrorMessage = ($field) => {
+
+            /** @type {string} - `valor del campo` */
+            const value = String($field.val() ?? '');
+
+            /** @type {string} - `mensaje genérico` */
+            const fallbackMessage =
+                $field.attr('data-advanced-validation-message')
+                || settings.message
+                || 'Campo inválido';
+
+            /** @type {boolean} - `campo obligatorio` */
+            const isRequired =
+                Boolean($field.data('advanced-validation-required'))
+                || $field[0].hasAttribute('data-advanced-validation');
+
+            //  -----  si el campo es obligatorio y está vacío, se devuelve el mensaje de error requerido  -----
+            if (isRequired && value === '') {
+                return $field.attr('data-advanced-validation-message-required') || fallbackMessage;
+            }
+
+            //  -----  si el campo está vacío, se devuelve null  -----
+            if (value === '') {
+                return null;
+            }
+
+            /** @type {string | undefined} - `patrón regex` */
+            const regexPattern = $field.attr('data-advanced-validation-regex');
+
+            //  -----  si el campo tiene un patrón regex, se valida  -----
+            if (regexPattern) {
+
+                //  -----  se intenta validar el campo con el patrón regex  -----
+                try {
+
+                    if (!new RegExp(regexPattern).test(value)) {
+                        return $field.attr('data-advanced-validation-message-regex') || fallbackMessage;
+                    }
+
+                }
+
+                //  -----  si el campo no coincide con el patrón regex, se devuelve el mensaje de error de regex  -----
+                catch {
+
+                    return fallbackMessage;
+                }
+
+            }
+
+
+            /** @type {string | undefined} - `longitud mínima` */
+            const minlengthAttr = $field.attr('data-advanced-validation-minlength');
+
+            //  -----  si el campo tiene una longitud mínima, se valida  -----
+            if (minlengthAttr !== undefined && minlengthAttr !== '') {
+
+                /** @type {number} */
+                const minlength = Number(minlengthAttr);
+
+                //  -----  si la longitud mínima es menor que la longitud del campo, se devuelve el mensaje de error de longitud mínima  -----
+                if (!Number.isNaN(minlength) && value.length < minlength) {
+                    return $field.attr('data-advanced-validation-message-minlength')
+                        || `Introduce al menos ${minlength} caracteres.`;
+                }
+
+            }
+
+            /** @type {string | undefined} - `longitud máxima` */
+            const maxlengthAttr = $field.attr('data-advanced-validation-maxlength');
+
+            //  -----  si el campo tiene una longitud máxima, se valida  -----
+            if (maxlengthAttr !== undefined && maxlengthAttr !== '') {
+
+                /** @type {number} */
+                const maxlength = Number(maxlengthAttr);
+
+                if (!Number.isNaN(maxlength) && value.length > maxlength) {
+                    return $field.attr('data-advanced-validation-message-maxlength')
+                        || `Introduce como máximo ${maxlength} caracteres.`;
+                }
+
+            }
+
+            //  -----  si el campo no cumple ninguna regla, se devuelve null  -----
+            return null;
+        };
+
+
+
+        /**
+         * -----------------------------------------------
+         * -----  `clearBasicFieldFeedback($field)`  -----
+         * -----------------------------------------------
+         * @param {JQuery<HTMLElement>} $field - Campo básico.
+         * @return {void}
+         */
+        const clearBasicFieldFeedback = ($field) => {
+            $field.removeClass(settings.errorClass);
+            $field.next('span.basic-validation-error').remove();
+        };
+
+
+        /**
+         * --------------------------------------------------------
+         * -----  `clearAdvancedFieldFeedback($field)`  -----
+         * --------------------------------------------------------
+         * @param {JQuery<HTMLElement>} $field - Campo avanzado.
+         * @return {void}
+         */
+        const clearAdvancedFieldFeedback = ($field) => {
+            $field.removeClass('advanced-validation-error');
+            $field.next(`span.${advancedErrorMessageClass}`).remove();
+        };
+
+
+        /**
+         * -------------------------------------------------------
+         * -----  `showAdvancedFieldError($field, message)`  -----
+         * -------------------------------------------------------
+         * @param {JQuery<HTMLElement>} $field - Campo inválido.
+         * @param {string} message - Texto bajo el input.
+         * @return {void}
+         */
+        const showAdvancedFieldError = ($field, message) => {
+
+            $field.addClass('advanced-validation-error');
+
+            /** @type {JQuery<HTMLSpanElement>} - `mensaje bajo el campo` */
+            const $error = $('<span>')
+                .addClass(advancedErrorMessageClass)
+                .attr('role', 'alert')
+                .text(message);
+
+            $field.after($error);
+        };
+
+
+        /**
          * --------------------------------
          * -----  `validateFields()`  -----
          * --------------------------------
-         * - Revisa los campos obligatorios y marca los que están vacíos.
-         * - Solo exige los que llevan `data-basic-validation-required`.
-         * @return {JQuery.Promise<void>} - Se resuelve si el formulario es válido.
+         * - Valida campos `.basic-validation` (obligatorios) y `.advanced-validation` (reglas data-*).
+         * @return {JQuery.Promise<void>}
          */
         const validateFields = () => {
 
-            /** @type {JQuery.Deferred<void>} - `resultado de la validación` */
+            /** @type {JQuery.Deferred<void>} */
             const deferred = $.Deferred();
 
             setIsValid(true);
 
             $el.find(settings.selector).each(function () {
 
-                /** @type {JQuery<HTMLInputElement | HTMLTextAreaElement>} - `campo a validar` */
+                /** @type {JQuery<HTMLInputElement | HTMLTextAreaElement>} */
                 const $field = /** @type {JQuery<HTMLInputElement | HTMLTextAreaElement>} */ ($(this));
 
-                /** - `el campo es obligatorio si el data attribute viene informado` */
+                //  -----  si el campo contiene la clase .advanced-validation, se valida  -----
+                if ($field.hasClass('advanced-validation')) {
+
+                    clearAdvancedFieldFeedback($field);
+
+                    /** @type {string | null} */
+                    const advancedMessage = getAdvancedFieldErrorMessage($field);
+
+                    //  -----  si el campo tiene un mensaje de error, se marca como inválido  -----
+                    if (advancedMessage !== null) {
+                        setIsValid(false);
+                        showAdvancedFieldError($field, advancedMessage);
+                    }
+
+                    //  -----  si el campo no tiene un mensaje de error, se continúa  -----
+                    return;
+                }
+
+                clearBasicFieldFeedback($field);
+
+                /** @type {boolean} */
                 const required = Boolean($field.data('basic-validation-required'));
 
-                $field.removeClass(settings.errorClass);
-                $field.next('span.basic-validation-error').remove();
-
-                //  -----  sin el data attribute el campo no se valida  -----
+                //  -----  si el campo no es obligatorio, se continúa  -----
                 if (!required) {
                     return;
                 }
 
-                /** @type {string} - `valor del campo sin espacios` */
+                /** @type {string} */
                 const value = String($field.val() ?? '').trim();
 
-                //  -----  si el campo está vacío, marcar error  -----
+                //  -----  si el campo está vacío, se marca como inválido  -----
                 if (value === '') {
+                    
                     setIsValid(false);
                     $field.addClass(settings.errorClass);
 
-                    /** @type {HTMLSpanElement} - `mensaje de error` */
-                    const error = document.createElement('span');
-                    error.className = 'basic-validation-error';
-                    error.textContent = settings.message;
-                    $field.after(error);
+                    /** @type {JQuery<HTMLSpanElement>} - `mensaje bajo el campo` */
+                    const $error = $('<span>')
+                        .addClass('basic-validation-error')
+                        .attr('role', 'alert')
+                        .text(settings.message);
+
+                    $field.after($error);
                 }
 
             });
 
-            //  -----  resolver o rechazar según el resultado ya guardado  -----
             if (isValid()) {
                 deferred.resolve();
             } else {
@@ -145,9 +307,8 @@
          * ------------------------------
          * -----  `hook(hookName)`  -----
          * ------------------------------
-         * - Ejecuta un callback de las opciones con el formulario como `this`.
          * @param {keyof AdvancedValidationOptions} hookName - Nombre del callback.
-         * @return {void | JQuery.Promise<void>} - Lo que devuelva el callback, si devuelve algo.
+         * @return {void | JQuery.Promise<void>}
          */
         const hook = (hookName) => {
 
@@ -163,8 +324,7 @@
          * --------------------------
          * -----  `validate()`  -----
          * --------------------------
-         * - Lanza la validación y los hooks `onValidating`, `onIsValid`, `onIsNotValid` y `onValidated`.
-         * @return {JQuery.Promise<void>} - Se rechaza si el formulario no es válido.
+         * @return {JQuery.Promise<void>}
          */
         const validate = () => {
 
@@ -185,16 +345,19 @@
          * ----------------------------------
          * -----  `option(key, value)`  -----
          * ----------------------------------
-         * - Lee o escribe una opción de la instancia.
-         * @param {keyof AdvancedValidationOptions} key - Nombre de la opción.
-         * @param {AdvancedValidationOptions[keyof AdvancedValidationOptions]} [value] - Nuevo valor. Si se omite, solo lee.
-         * @return {AdvancedValidationOptions[keyof AdvancedValidationOptions] | void} - Valor leído, o nada si se escribió.
+         * - Lee o escribe una opción de la instancia (`message`, `errorClass`, `selector`, hooks, etc.).
+         * - Escritura: `$('#form').advancedValidation('option', 'message', 'Texto')`.
+         * - Lectura: `$('#form').advancedValidation('option', 'message')`.
+         * @template {keyof AdvancedValidationOptions} K
+         * @param {K} key - Nombre de la opción en `AdvancedValidationOptions`.
+         * @param {AdvancedValidationOptions[K]} [value] - Nuevo valor; si se omite, solo lectura.
+         * @return {AdvancedValidationOptions[K] | void} Valor al leer; `undefined` al escribir.
          */
         const option = (key, value) => {
 
             if (value !== undefined) {
 
-                /** @type {Record<keyof AdvancedValidationOptions, AdvancedValidationOptions[keyof AdvancedValidationOptions]>} - `opciones con escritura por clave` */
+                /** @type {Record<keyof AdvancedValidationOptions, AdvancedValidationOptions[keyof AdvancedValidationOptions]>} */
                 const writableSettings = /** @type {Record<keyof AdvancedValidationOptions, AdvancedValidationOptions[keyof AdvancedValidationOptions]>} */ (
                     settings
                 );
@@ -211,8 +374,6 @@
          * -------------------------
          * -----  `destroy()`  -----
          * -------------------------
-         * - Quita la validación y la instancia guardada en el formulario.
-         * @return {void}
          */
         const destroy = () => {
 
@@ -220,18 +381,19 @@
 
             $el.find(settings.selector).each(function () {
 
-                /** @type {JQuery<HTMLElement>} - `campo con restos de la validación` */
+                /** @type {JQuery<HTMLElement>} */
                 const $field = /** @type {JQuery<HTMLElement>} */ ($(this));
 
-                $field.removeClass(settings.errorClass);
-                $field.next('span.basic-validation-error').remove();
+                if ($field.hasClass('advanced-validation')) {
+                    clearAdvancedFieldFeedback($field);
+                } else {
+                    clearBasicFieldFeedback($field);
+                }
             });
 
             $el.removeData('basic-validation-isvalid');
 
             hook('onDestroy');
-
-            //  -----  sin instancia, una llamada posterior a un método lanza error  -----
             $el.removeData(dataKey);
         };
 
@@ -240,19 +402,18 @@
          * ----------------------
          * -----  `init()`  -----
          * ----------------------
-         * - Valida al enviar y cancela el envío si el formulario no es válido.
-         * @return {void}
          */
         const init = () => {
 
-            //  -----  el flag queda escrito en el acto; el fail del deferred llega después  -----
             $el.on('submit.' + pluginName, (event) => {
 
-                validate();
+                event.preventDefault();
 
-                if (!isValid()) {
-                    event.preventDefault();
-                }
+                validate()
+                    .done(() => {
+                        el.submit();
+                    });
+
             });
 
             hook('onInit');
@@ -268,47 +429,47 @@
             isValid,
             validate
         };
+
     };
 
 
+    
     /**
      * -------------------------------------------
      * -----  `advancedValidation(options)`  -----
      * -------------------------------------------
-     * - Crea una instancia por elemento, o llama a un método público si el primer argumento es un string.
-     * - Métodos: `validate`, `isValid`, `option`, `destroy`.
-     * @param {AdvancedValidationOptions | string} [options] - Opciones del plugin o nombre del método.
-     * @this {JQuery} - `formulario que dispara el plugin`
-     * @return {AdvancedValidationCallResult} - Cadena jQuery, o el valor del método.
+     * - Registra el plugin en la colección jQuery (`$.fn.advancedValidation`).
+     * - Objeto u omisión: crea una instancia por formulario (`createPlugin`).
+     * - String: llama a un método público (`validate`, `isValid`, `option`, `destroy`).
+     * @param {AdvancedValidationOptions | string} [options] - Opciones o nombre del método.
+     * @this {JQuery}
+     * @return {AdvancedValidationCallResult} Cadena jQuery o valor devuelto por el método.
      */
     const advancedValidation = function (options) {
 
-
-        //  -----  string: llamada a un método público de la instancia  -----
         if (typeof arguments[0] === 'string') {
 
-            /** @type {string} - `nombre del método público` */
+            /** @type {string} */
             const methodName = arguments[0];
 
-            /** @type {unknown[]} - `argumentos del método, sin el nombre` */
+            /** @type {unknown[]} */
             const args = Array.prototype.slice.call(arguments, 1);
 
-            /** @type {AdvancedValidationCallResult} - `valor devuelto por el método` */
+            /** @type {AdvancedValidationCallResult} */
             let returnVal;
 
             this.each(function () {
 
-                /** @type {Record<string, (...args: unknown[]) => AdvancedValidationCallResult> | undefined} - `instancia del elemento` */
+                /** @type {AdvancedValidationApi | undefined} */
                 const instance = $.data(this, dataKey);
 
                 if (instance && typeof instance[methodName] === 'function') {
-                    returnVal = instance[methodName].apply(this, args);
+                    returnVal = instance[methodName].apply(instance, args);
                 } else {
                     throw new Error('Method ' + methodName + ' does not exist on jQuery.' + pluginName);
                 }
             });
 
-            //  -----  si el método devuelve algo, se pierde el encadenado  -----
             if (returnVal !== undefined) {
                 return returnVal;
             }
@@ -317,12 +478,10 @@
         }
 
 
-        //  -----  objeto u omisión: una instancia por elemento  -----
         if (typeof options !== 'string') {
 
             return this.each(function () {
 
-                //  -----  no volver a crear la instancia si ya existe  -----
                 if (!$.data(this, dataKey)) {
                     $.data(
                         this,
@@ -337,6 +496,14 @@
 
     $.fn.advancedValidation = /** @type {AdvancedValidationPlugin} */ (advancedValidation);
 
+    
+    /**
+     * ---------------------------------------------------
+     * -----  `$.fn.advancedValidation.defaults`  -----
+     * ---------------------------------------------------
+     * - Opciones por defecto; se fusionan con `$.extend` al crear la instancia.
+     * @type {Required<AdvancedValidationOptions>}
+     */
     $.fn.advancedValidation.defaults = defaults;
 
 

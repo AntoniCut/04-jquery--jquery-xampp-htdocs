@@ -62,6 +62,15 @@ $(function () {
     /** @type {JQuery<HTMLParagraphElement>} - Párrafo del hook onDestroy */
     const $destroyLog = $('#destroyLog');
 
+    /** @type {JQuery<HTMLFormElement>} - Formulario validación avanzada */
+    const $formAdvanced = $('#formAdvanced');
+
+    /** @type {JQuery<HTMLButtonElement>} - Validar sin submit */
+    const $btnValidateAdvanced = $('#btnValidateAdvanced');
+
+    /** @type {JQuery<HTMLParagraphElement>} - Log del ejemplo avanzado */
+    const $advancedLog = $('#advancedLog');
+
 
     /*
         *  -------------------------------  *
@@ -182,6 +191,27 @@ $(function () {
         );
 
         $optionLog.text(`Mensaje actualizado: ${message}`);
+    });
+
+
+    /*
+        *  -------------------------------------------  *
+        *  -----  Ejemplo validación avanzada  -----  *
+        *  -------------------------------------------  *
+    */
+
+    $formAdvanced.advancedValidation();
+
+    $btnValidateAdvanced.on('click', (event) => {
+        event.preventDefault();
+
+        $formAdvanced.advancedValidation('validate')
+            .done(() => {
+                $advancedLog.text('El formulario es válido.');
+            })
+            .fail(() => {
+                $advancedLog.text('Hay campos con errores.');
+            });
     });
 
 

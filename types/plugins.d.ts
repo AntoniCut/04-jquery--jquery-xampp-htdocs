@@ -15,10 +15,17 @@ declare const Handlebars: {
 declare global {
    
 
+     /*
+            *  --------------------------------------------------------------------------------------------------------------------  *
+            *  -----  plugins jQuery (clase 26) — /cursos/escuelait/clase-26-variables-gestion-opciones-plugins/plugins/*.js  -----  *
+            *  -----  Documentación en /cursos/escuelait/clase-25-jquery-plugins/plugins/*.js                                 -----  *
+            *  --------------------------------------------------------------------------------------------------------------------  *
+    */
+
     /**
-     * -------------------------------------------
-     * -----  `FontSizerAdvancedOptions {}`  -----
-     * -------------------------------------------
+     * --------------------------------------------------
+     * -----  interface `FontSizerAdvancedOptions`  -----
+     * --------------------------------------------------
      * Opciones de `fontSizerAdvanced`.
      * Se fusionan con `{ target: '#fontSizer', onFontResized: () => {} }` mediante `$.extend`.
      */
@@ -31,9 +38,9 @@ declare global {
 
 
     /**
-     * ---------------------------------
-     * -----  `HilightOptions {}`  -----
-     * ---------------------------------
+     * ----------------------------------------
+     * -----  interface `HilightOptions`  -----
+     * ---------------------------------------
      * Opciones de `hilight`.
      * Se fusionan con los valores por defecto mediante `$.extend`.
      */
@@ -48,9 +55,9 @@ declare global {
 
 
     /**
-     * ----------------------------------
-     * -----  `AjaxFormOptions {}`  -----
-     * ----------------------------------
+     * -----------------------------------------
+     * -----  interface `AjaxFormOptions`  -----
+     * -----------------------------------------
      * Opciones de `ajaxForm`.
      * Se fusionan con `action` / `method` del formulario y con los valores por defecto.
      */
@@ -71,9 +78,9 @@ declare global {
 
 
     /**
-     * -----------------------------------
-     * -----  `AjaxFormResponse {}`  -----
-     * -----------------------------------
+     * ------------------------------------------
+     * -----  interface `AjaxFormResponse`  -----
+     * ------------------------------------------
      * JSON que devuelve `enviar.php`.
      */
     interface AjaxFormResponse {
@@ -85,9 +92,9 @@ declare global {
 
 
     /**
-     * -----------------------------------------
-     * -----  `BasicValidationOptions {}`  -----
-     * -----------------------------------------
+     * ------------------------------------------------
+     * -----  interface `BasicValidationOptions`  -----
+     * ------------------------------------------------
      * Opciones de `basicValidation`.
      * Se fusionan con los valores por defecto mediante `$.extend`.
      */
@@ -103,10 +110,18 @@ declare global {
     }
 
 
+     /*
+            *  -----------------------------------------------------------------------------------  *
+            *  -----  interf jQuery (clase 27) — jquery.advanced-validation.js              -----  *
+            *  -----  Documentación en 01-advanced-validation/jquery.advanced-validation.js  -----  *
+            *  -----------------------------------------------------------------------------------  *
+        */
+
+
     /**
-     * --------------------------------------------
-     * -----  `AdvancedValidationOptions {}`  -----
-     * --------------------------------------------
+     * ---------------------------------------------------
+     * -----  interface `AdvancedValidationOptions`  -----
+     * ---------------------------------------------------
      * Opciones de `advancedValidation`.
      * Se fusionan con los valores por defecto mediante `$.extend`.
      */
@@ -133,9 +148,9 @@ declare global {
 
 
     /**
-     * ----------------------------------------
-     * -----  `AdvancedValidationApi {}`  -----
-     * ----------------------------------------
+     * -----------------------------------------------
+     * -----  interface `AdvancedValidationApi`  -----
+     * -----------------------------------------------
      * Métodos públicos guardados en `$.data` del formulario.
      */
     interface AdvancedValidationApi {
@@ -158,9 +173,9 @@ declare global {
 
 
     /**
-     * --------------------------------------------
-     * -----  `AdvancedValidationCallResult`  -----
-     * --------------------------------------------
+     * -------------------------------------------------
+     * -----  type `AdvancedValidationCallResult`  -----
+     * -------------------------------------------------
      * Valor de `advancedValidation` al crear la instancia o al llamar a un método público.
      */
     type AdvancedValidationCallResult =
@@ -183,7 +198,8 @@ declare global {
          * -------------------------------------------
          * -----  `advancedValidation(options)`  -----
          * -------------------------------------------
-         * - Valida al enviar los campos con `data-basic-validation-required`.
+         * - Campos `.basic-validation`: obligatorios con `data-basic-validation-required`.
+         * - Campos `.advanced-validation`: reglas `data-advanced-validation-*` (required, regex, min/max, mensajes).
          * - Guarda una instancia por formulario y no vuelve a crearla.
          * @param {AdvancedValidationOptions} [options] - Opciones del plugin.
          * @param {string} [options.selector] - Selector de los campos a revisar.
@@ -262,7 +278,10 @@ declare global {
 
         /** - `valores por defecto del plugin` */
         defaults: Required<AdvancedValidationOptions>;
+
+
     }
+
 
 
     interface JQuery {
@@ -421,8 +440,7 @@ declare global {
          * -------------------------------------------
          * -----  `advancedValidation(options)`  -----
          * -------------------------------------------
-         * - Valida al enviar los campos con `data-basic-validation-required`.
-         * - Guarda una instancia por formulario y no vuelve a crearla.
+         * - Valida `.basic-validation` y `.advanced-validation` (ver defaults.selector).
          * - Si el primer argumento es un string, llama a `validate`, `isValid`, `option` o `destroy`.
          * - Los valores por defecto están en `defaults`.
          */

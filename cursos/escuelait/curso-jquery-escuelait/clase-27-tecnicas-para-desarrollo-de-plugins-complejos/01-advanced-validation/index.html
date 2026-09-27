@@ -29,6 +29,17 @@
             display: block;
             color: #b00020;
         }
+
+        input.advanced-validation-error {
+            box-shadow: 0 0 0 2px #b00020;
+        }
+
+        .advanced-validation-error-message {
+            display: block;
+            margin-top: 0.35rem;
+            color: #b00020;
+            font-size: 0.875rem;
+        }
     </style>
 
 </head>
@@ -127,6 +138,51 @@
             </p>
         </form>
         <p id="optionLog"></p>
+    </section>
+
+
+    <section>
+        <h2>Validación avanzada (regex y longitud)</h2>
+        <p>Campos con clase <code>.advanced-validation</code> y atributos <code>data-advanced-validation-*</code>: obligatorio, regex, mínimo y máximo. Mensaje bajo cada campo inválido.</p>
+
+        <form id="formAdvanced" action="enviar.php" method="post">
+            <p>
+                <label for="nombreAdvanced">Nombre</label>
+                <input
+                    id="nombreAdvanced"
+                    name="nombre"
+                    type="text"
+                    class="advanced-validation"
+                    data-advanced-validation-required="true"
+                    data-advanced-validation-regex="^[a-zA-Z]+$"
+                    data-advanced-validation-minlength="3"
+                    data-advanced-validation-maxlength="10"
+                    data-advanced-validation-message-required="El nombre es obligatorio."
+                    data-advanced-validation-message-regex="Solo letras, sin números ni espacios."
+                />
+            </p>
+            <p>
+                <label for="telefonoAdvanced">Teléfono</label>
+                <input
+                    id="telefonoAdvanced"
+                    name="telefono"
+                    type="tel"
+                    class="advanced-validation"
+                    data-advanced-validation
+                    data-advanced-validation-regex="^[0-9]+$"
+                    data-advanced-validation-minlength="9"
+                    data-advanced-validation-maxlength="15"
+                    data-advanced-validation-message-required="El teléfono es obligatorio."
+                    data-advanced-validation-message-regex="Solo dígitos numéricos."
+                    data-advanced-validation-message-minlength="El teléfono debe tener al menos 9 dígitos."
+                />
+            </p>
+            <p>
+                <button type="submit">Enviar</button>
+                <button type="button" id="btnValidateAdvanced">Validar sin enviar</button>
+            </p>
+        </form>
+        <p id="advancedLog"></p>
     </section>
 
 
