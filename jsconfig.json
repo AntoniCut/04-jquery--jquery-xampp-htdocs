@@ -10,12 +10,17 @@
         "strictNullChecks": false,
         "noImplicitAny": false,
         "skipLibCheck": true,
-        "typeRoots": ["./node_modules/@types"]
+        "typeRoots": ["./node_modules/@types"],
+        "types": ["jquery"]
     },
     "include": [
         "cursos/escuelait/**/*.js",
         "types/**/*.d.ts",
         "desarrollowebcom/**/*.js"
     ],
-    "exclude": ["node_modules", "**/node_modules/**"]
+    "exclude": [
+        "node_modules",
+        "**/node_modules/**",
+        "**/* copy.js"
+    ]
 }
